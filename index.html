@@ -4,14 +4,63 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>MoodyFoody</title>
 </head>
 <body>
-<!-- container: h1 element -->
-<!--  container: form - h3 - subtext description - 6 form inputs - submit btn -->
-<!--  form Inputs: 1. text - 2. rangebar - 3. rangebar - 4. dropdown
-                   5. text: autofill  - 6. droupdown (right now/bf/ln/dn)
-       container: img-->
+    <div class=" center container">
+            <h1> MoodyFoody </h1>
+    </div>
+    <!-- Add container for logo at later time-->
+    <div class= "center-align container">
+        <div class= "col s-1">
+            <h3> Find your Perfect Resturant</h3>
+            <h5> fill out this quick survey to find your ideal resturant </h5>
+        </div>
+        <div class="col s1">
+            <form class= "center-block container">
+                <!-- auto complete form-->
+                <div class="input-field col s1">
+                    <input value="" id="locationInput" type="text" class="validate"> LOCATION</input>
+                    <!-- <label class="active" for="locationInput">LOCATION</label> -->
+                </div>
+                <!-- inclue javascript to appear # for range finder-->
+                <div class="range-field">
+                    <label class="active" for="priceRangeInput">PRICE RANGE</label>
+                    <input type="range" id="priceRangeInput" min="$" max="$$$$" />
+                </div>
+                                <!-- inclue javascript to appear # for range finder-->
 
+                <div class="range-field">
+                    <label class="active" for="distanceInput">DISTANCE</label>
+                    <input type="range" id="distanceInput" min="1" max="20"/>
+                </div>
+                <div class="col s1">
+                    <select class="browser-default" id="foodTypeInput">
+                    <option value="" disabled selected> RESTURANT TYPE</option>
+                    <option value="1">Sitdown</option>
+                    <option value="2">Takeaway</option>
+                </div>
+                <!-- auto complete form-->
+                <div class="input-field col s1">
+                    <!-- <label class="active" for="foodTypeInput"> FOOD GENRE </label> -->
+                    <input value="" id="foodTypeInput" type="text" class="validate"> FOOD GENRE</input>
+                </div>
+                <div class="col s1">
+                    <select class="browser-default" id="timeInput">
+                    <option value="" disabled selected> WHEN</option>
+                    <option value="1">Right Now</option>
+                    <option value="2">Breakfast</option>
+                    <option value="3">Lunch</option>
+                    <option value="4">Dinner</option>
+                </div>
+                <div ID="submitBtn">
+                    <input class="btn waves-effect waves-light" type="submit" name="action"> </input>
+                </div>
+            </form>
+
+        </div>
+    </div>
 </body>
 </html>
