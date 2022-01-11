@@ -29,6 +29,25 @@ var Bearer = 'Bearer ' + APIKEY   //needed for authentication header
   })
 }
 
+//Responsible for displaying map on results.html
+let map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: 30.307613, lng: -97.7509029 },
+    zoom: 10,
+  }
+  );
+
+  var myLatLng = { lat: 30.3159319310134, lng: -97.7336796197883 }
+  new google.maps.Marker({
+    position: myLatLng,
+    map,
+    title: "Hello World!",
+  });
+}
+
+
 
 
 //SCRIPT FILE 1
