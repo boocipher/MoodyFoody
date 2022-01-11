@@ -5,14 +5,11 @@ var distanceInput = 10000  //in meters max is 40000 meters
 var foodTypeInput = "sit-down italian"  //fastfood-sitdown-
 var timeInput = '&open_now=true'    //now, breakfast,lunch,dinner //if user selects open now, then add '&open_now=true' to query string, if user selects time then add '&open_at=[time(int)]
 
-// EXAMPLE OF WORKING URL 
-// var requestedUrl = 'https://salty-mountain-68764.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=delis&location="12917 Quinn Trail, Austin, TX 78727"'
-
-//the first half of this url is needed because of a CORS error
-
+var searchResultsArray = []   //will store all parsed data from Yelp API pull
 
 yelpCallAPI()
 function yelpCallAPI() {
+//the first half of this url is needed because of a CORS error
 var yelpUrl = 'https://salty-mountain-68764.herokuapp.com/https://api.yelp.com/v3/businesses/search?price='+ priceRangeInput +'&term='+foodTypeInput+'&location=' + locationInput + timeInput
 var APIKEY = 'Dm03wv4YdEsLaKufEPshYjbDKuUxpKY621FUmPuz_y172PgIO3devn-UJtkkEPc6O7WuSgsyAc9PZOsA1kySWKeAb3mZb41NPezvv9taNTuHaSeuDkWNqrUI8KfbYXYx'
 var Bearer = 'Bearer ' + APIKEY   //needed for authentication header
@@ -24,8 +21,21 @@ var Bearer = 'Bearer ' + APIKEY   //needed for authentication header
   }).then(function(response) {
     return response.json()      //converts data into JSON
   }).then(function(data) {
-    console.log("\-------Yelp Call-------")
-    console.log(data)
+    console.log("-------Yelp Call-------");
+    console.log(data);    //displays yelp call Data
+      for (var i = 0; i < 5; i++) {     //for loop iterates through data object and parses from the first 5 elements in the array
+      var searchResult = {
+        restaurantName: data.businesses[i].name,
+        price: data.businesses[i].price,
+        location: [data.businesses[i].coordinates.longitude, data.businesses[i].coordinates.latitude],
+        rating: data.businesses[i].rating,
+        image: data.businesses[i].image_url,
+        websiteLink: data.businesses[i].url,
+      }
+      searchResultsArray.push(searchResult);  //pushes searchResult (parsed data object) into array before iterating to next index in data array
+    }
+    console.log("Below are search results that will be appended to the page")
+    console.log(searchResultsArray);
   })
 }
 
