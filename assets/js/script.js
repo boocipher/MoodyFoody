@@ -29,4 +29,42 @@ var Bearer = 'Bearer ' + APIKEY   //needed for authentication header
   })
 }
 
-//
+
+
+//SCRIPT FILE 1
+//Target specific elements on our form to recieve values inputted the user
+  // var locationInput 
+  // var priceRangeInput
+  // var distanceInput 
+    //user input miles, needs to be converted to meters (There is a max look up in DOCS)
+  // var foodTypeInput
+  // var timeInput   
+    //Pulls values when the user press submit
+      //Event listenea
+        //redirect the user to results.html
+
+// Consider for later--user inputs how many search results they would like to see
+
+//SCRIPT FILE 2
+  //Input variables need to be placed into query string for Yelp API
+  //Fetch and convert data to JSON from YELP API
+  //Pull variables from JSON and put them into an object.
+    //use for loop to iterate through 5 different businesses        <--Functional, but maybe should pull more for improved user experience.  Consider this after we get main functionality and adding option to scroll more
+      //var searchResult = {
+      //   title: ,
+      //   price: ,
+      //   location: [latitude, longitude]
+      //   star-rating: ,
+      //   hours: ,
+      // } 
+      //push 5 searchResults into an array --> var searchResultsArray
+
+//append all our options to left column on results page using Dynamic HTML
+
+
+  //using pull location in searchResult object, we need to display a pin for that location.  Each pin will be labeled with a number corresponding to that search results location.
+  //all 5 pins will be on the map at the same time.
+    //for loop to iterate through searchResultsArray.location to display all markers at the same time.
+  
+  
+  //We need to convert locationInput to latitude and longitude using either Google Maps API (You will need to look up how to do this on docs) or you can use OpenWeatherMap or another API.
