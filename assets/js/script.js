@@ -36,28 +36,38 @@ var Bearer = 'Bearer ' + APIKEY   //needed for authentication header
     }
     console.log("Below are search results that will be appended to the page")
     console.log(searchResultsArray);
+    displayMap()
   })
 }
 
-//Responsible for displaying map on results.html
+//Responsible for displaying map on results.html and fav.html
+function displayMap() {
 let map;
+const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" //needed for marker labels
 
+initMap()
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 30.307613, lng: -97.7509029 },
+    center: { lat: 30.307613, lng: -97.7509029 }, //determines center of map
     zoom: 10,
-  }
+    }
   );
-
-  var myLatLng = { lat: 30.3159319310134, lng: -97.7336796197883 }
-  new google.maps.Marker({
-    position: myLatLng,
-    map,
-    title: "Hello World!",
-  });
+  for (var i = 0; i<searchResultsArray.length; i++) {  //for loop to iterate through searchResultsArray
+    console.log("Adding '"+labels.charAt(i)+ "' Marker to map with coordinates: ");
+    console.log(searchResultsArray[i].location);
+    var LatLng = {
+      lat: searchResultsArray[i].location[1], //pulls latitude from searchResultsArray
+      lng: searchResultsArray[i].location[0], //pulls longitude from searchResultsArray
+    };
+    new google.maps.Marker({  //places marker
+      position: LatLng,
+      label: labels.charAt(i),
+      map,
+      title: searchResultsArray[i].restaurantName,
+    });
 }
-
-
+}
+}
 
 
 //SCRIPT FILE 1
