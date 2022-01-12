@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>MoodyFoody</title>
+</head>
+<body>
+    <!-- container: h1 -->
+    <!-- flex container row : 
+            imbeded within- 
+               two flex-container columns
+                1. 4 flex-container colums
+                    -left-float img 
+                    - row-container: h1 element/heart btn - display block h6, p, stars, 
+                2. flex-container colum: Google map -- div with id=Map is the container where the map will load-->
+                <div id="map"></div>
+            
+</body>
+<!-- script needed for google maps API call -- "callback=initMap" calls the initMap function in script -->
+<script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2zgWJRoeij-FPFj_I39eZ9oDHPcXlQoc&libraries=places&callback=initMap" 
+    async=true>
+</script>
+<!-- jQuery script CDN -->
+<script 
+    src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous">
+</script>
+<script src="assets/js/script.js"></script>
+</html>
