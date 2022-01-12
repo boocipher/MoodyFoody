@@ -40,25 +40,30 @@ var Bearer = 'Bearer ' + APIKEY   //needed for authentication header
   })
 }
 
-//Responsible for displaying map on results.html
+//Responsible for displaying map on results.html and fav.html
 function displayMap() {
 let map;
+const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" //needed for marker labels
 
 initMap()
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 30.307613, lng: -97.7509029 },
+    center: { lat: 30.307613, lng: -97.7509029 }, //determines center of map
     zoom: 10,
-  }
+    }
   );
-  console.log("test")
-  for (var i = 0; i<searchResultsArray.length; i++) {
-    console.log(searchResultsArray[i].location)
-    var LatLng = searchResultsArray[i].location
-    new google.maps.Marker({
-      position: LngLat,
+  for (var i = 0; i<searchResultsArray.length; i++) {  //for loop to iterate through searchResultsArray
+    console.log("Adding '"+labels.charAt(i)+ "' Marker to map with coordinates: ");
+    console.log(searchResultsArray[i].location);
+    var LatLng = {
+      lat: searchResultsArray[i].location[1], //pulls latitude from searchResultsArray
+      lng: searchResultsArray[i].location[0], //pulls longitude from searchResultsArray
+    };
+    new google.maps.Marker({  //places marker
+      position: LatLng,
+      label: labels.charAt(i),
       map,
-      title: "Hello World!",
+      title: searchResultsArray[i].restaurantName,
     });
 }
 }
