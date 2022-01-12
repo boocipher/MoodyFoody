@@ -7,6 +7,22 @@ var timeInput = '&open_now=true'    //now, breakfast,lunch,dinner //if user sele
 
 var searchResultsArray = []   //will store all parsed data from Yelp API pull
 
+var userLocationLatLng
+
+geoLocation()
+function geoLocation() {  //needed to 
+  fetch('https://maps.googleapis.com/maps/api/geocode/json?address=78727&key=AIzaSyC2zgWJRoeij-FPFj_I39eZ9oDHPcXlQoc')
+.then(function(response) {
+  return response.json();
+}).then(function(data) {
+  console.log("-------Yelp Call-------");
+  console.log(data);
+  userLocationLatLng = data.results[0].geometry.location;
+  console.log("Below are the coordinates of the user's location input")
+  console.log(userLocationLatLng)
+})
+}
+
 yelpCallAPI()
 function yelpCallAPI() {
 //the first half of this url is needed because of a CORS error
@@ -48,7 +64,7 @@ const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" //needed for marker labels
 initMap()
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 30.307613, lng: -97.7509029 }, //determines center of map
+    center: userLocationLatLng, //determines center of map
     zoom: 10,
     }
   );
