@@ -1,5 +1,5 @@
 //We need to target these variables once their respective elements are added to the HTML
-var locationInput = "austin"   //string, can be zip code, city, or current address
+var locationInput = "Austin"   //string, can be zip code, city, or current address
 var priceRangeInput = "2" //1 = $, 2 = $$, 3 = $$$, 4 = $$$$
 var distanceInput = 10000  //in meters max is 40000 meters
 var foodTypeInput = "sit-down italian"  //fastfood-sitdown-
@@ -7,19 +7,19 @@ var timeInput = '&open_now=true'    //now, breakfast,lunch,dinner //if user sele
 
 var searchResultsArray = []   //will store all parsed data from Yelp API pull
 
-var userLocationLatLng
+var userLocationLatLng        //will store coordinates of locationInput
 
 geoLocation()
-function geoLocation() {  //needed to 
-  fetch('https://maps.googleapis.com/maps/api/geocode/json?address=78727&key=AIzaSyC2zgWJRoeij-FPFj_I39eZ9oDHPcXlQoc')
+function geoLocation() {  //google API call to convert address/city/zipcode/etc to coordinates
+  fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+locationInput+'&key=AIzaSyC2zgWJRoeij-FPFj_I39eZ9oDHPcXlQoc')
 .then(function(response) {
   return response.json();
 }).then(function(data) {
-  console.log("-------Yelp Call-------");
+  console.log("-------Google Geolocation Call-------");
   console.log(data);
   userLocationLatLng = data.results[0].geometry.location;
-  console.log("Below are the coordinates of the user's location input")
-  console.log(userLocationLatLng)
+  console.log("Below are the coordinates of the user's location input");
+  console.log(userLocationLatLng);
 })
 }
 
@@ -64,7 +64,7 @@ const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" //needed for marker labels
 initMap()
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: userLocationLatLng, //determines center of map
+    center: userLocationLatLng, //determines center of map (user location)
     zoom: 10,
     }
   );
