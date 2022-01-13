@@ -4,26 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/results.css">
     <title>MoodyFoody</title>
 </head>
 <body>
     <!-- container: h1 -->
+    <div class="centerContainer">
+        <h1> MoodyFoody </h1>
+    </div>
     <!-- flex container row : 
             imbeded within- 
                two flex-container columns
-                1. 4 flex-container colums
+                1. 4 flex-container columns
                     -left-float img 
                     - row-container: h1 element/heart btn - display block h6, p, stars, 
                 2. flex-container colum: Google map -- div with id=Map is the container where the map will load-->
+    <div class= "main-container">
+                <div id="results-container" class="flex-column">
+                    <div class="result-box">Result 1</div>
+                    <div class="result-box">Result 2</div>
+                    <div class="result-box">Result 3</div>
+                    <div class="result-box">Result 4</div>
+                    <div class="result-box">Result 5</div>
+                    <!--  -->
+
+                </div>
                 <div id="map"></div>
+
+    </div>
             
 </body>
 <!-- script needed for google maps API call -- "callback=initMap" calls the initMap function in script -->
-<script 
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2zgWJRoeij-FPFj_I39eZ9oDHPcXlQoc&libraries=places&callback=initMap" 
-    async=true>
-</script>
+<!-- <script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2zgWJRoeij-FPFj_I39eZ9oDHPcXlQoc&libraries=places" 
+    async=false>
+</script> -->
 <!-- jQuery script CDN -->
 <script 
     src="https://code.jquery.com/jquery-3.6.0.min.js" 
