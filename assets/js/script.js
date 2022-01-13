@@ -7,24 +7,20 @@ var timeInput = '&open_now=true'    //now, breakfast,lunch,dinner //if user sele
 var distanceInputMeters 
 var searchResultsArray = []   //will store all parsed data from Yelp API pull
 
-$('#submitButton').on('click',function(event) {
-  event.preventDefault();
-  locationInput = $('#location').val();
-  console.log(locationInput)
-  priceRangeInput = $('#priceRange').val();
-  distanceInput = $('#distance').val();
-  foodTypeInput = $('#foodTypeInput').val() + " " + $('#foodGenre').val();
-  timeInput = $('#timeInput').val();
-  lengthConverter()
-  yelpCallAPI()
-})
+$('#submitButton').on('click',function() {
+		locationInput = $('#location').val();
+		priceRangeInput = $('#priceRange').val();
+		distanceInput = $('#distance').val();
+		foodTypeInput = $('#foodTypeInput').val() + $('#foodGenre').val();
+		timeInput = $('#timeInput').val();
+  })
 
 function lengthConverter() {
   // distanceInput = distanceInput.val()
   distanceInputMeters = (distanceInput/0.00062137).toFixed(0).toString();
   console.log (typeof(distanceInputMeters)) //converts miles to meters from user input
 }
-// lengthConverter()
+lengthConverter()
 
 var userLocationLatLng        //will store coordinates of locationInput
 
@@ -42,7 +38,7 @@ var userLocationLatLng        //will store coordinates of locationInput
 // })
 // }
 
-// yelpCallAPI()
+yelpCallAPI()
 function yelpCallAPI() {
 //the first half of this url is needed because of a CORS error
 var yelpUrl = 'https://salty-mountain-68764.herokuapp.com/https://api.yelp.com/v3/businesses/search?radius='+ distanceInputMeters +'&price='+ priceRangeInput +'&term='+foodTypeInput+'&location=' + locationInput + timeInput
