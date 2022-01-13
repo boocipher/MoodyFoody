@@ -1,155 +1,152 @@
-#map {
-    height: 299px;
-    width:500px;
-}
-/* heading: MoodyFoody */
-h1 {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 80px;
-    line-height: 94px;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.04em;
-
-    color: #000000;
-}
-/* form for resturant search */
-form{
-    background: #F3F3F3;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 25px;
-    padding: 5%;
-
-}
-
-h3 {
-
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 48px;
-    line-height: 56px;
-    align-items: center;
-    text-align: center;
-    text-transform: capitalize;
-
-    color: #4B4B4B;
-}
-
-h5{
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 28px;
-    line-height: 33px;
-    align-items: center;
-    text-align: center;
-
-    color: #5A5A5A;
-}
-
-/* form controls: */
-
-#location {
-    background: #E3E3E3;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 10px;
-}
-
-
-/* add in active click and hover features */
-::placeholder {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 35px;
-    /* display: flex; */
-    /* align-items: center; */
-    text-align: center;
-    text-transform: uppercase;
-
-    color: #575757;
-}
-
-#priceRange {
-    background: #E3E3E3;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 10px;
-}
-
-#priceRangeInput{
-}
-
-/* type {
-    color: #929292;
-    width: 454px;
-    height: 20px;
-
-} */
-
-#distance {
-    background: #E3E3E3;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 10px;
-}
-
-#resturantType {
-    background: #E3E3E3;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 10px;
-}
-
-#foodGenre {
-    background: #E3E3E3;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 10px;
-}
-
-#time{
-    background: #E3E3E3;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 10px;
-}
-
-#submitBtn {
-    background: #9F9F9F;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 6px;
-    width: 180px;
-    height: 60px;
+    /* heading: MoodyFoody */
+    h1 {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 80px;
+        line-height: 94px;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 0.04em;
     
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    line-height: 47px;
-    /* display: flex; */
-    align-items: center;
-    text-align: center;
-    text-transform: uppercase;
-
-    color: #ECECEC;
-}
-/* 
-input {
-    background: #E3E3E3;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 10px;
-    text-align: center;
-    width: auto;
-    height: 50px;
-    display: flex;
-    width: 600px;
-} */
+        color: #000000;
+    }
+    /* form for resturant search */
+    form{
+        background: #F3F3F3;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 25px;
+        padding: 5%;
+    
+    }
+    
+    h3 {
+    
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 48px;
+        line-height: 56px;
+        align-items: center;
+        text-align: center;
+        text-transform: capitalize;
+    
+        color: #4B4B4B;
+    }
+    
+    h5{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 28px;
+        line-height: 33px;
+        align-items: center;
+        text-align: center;
+    
+        color: #5A5A5A;
+    }
+    
+    /* form controls: */
+    
+    #location {
+        background: #E3E3E3;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+    
+    
+    /* add in active click and hover features */
+    ::placeholder {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 35px;
+        /* display: flex; */
+        /* align-items: center; */
+        text-align: center;
+        text-transform: uppercase;
+    
+        color: #575757;
+    }
+    
+    #priceRange {
+        background: #E3E3E3;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+    
+    #priceRangeInput{
+    }
+    
+    /* type {
+        color: #929292;
+        width: 454px;
+        height: 20px;
+    
+    } */
+    
+    #distance {
+        background: #E3E3E3;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+    
+    #resturantType {
+        background: #E3E3E3;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+    
+    #foodGenre {
+        background: #E3E3E3;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+    
+    #time{
+        background: #E3E3E3;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+    
+    #submitBtn {
+        background: #9F9F9F;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 6px;
+        width: 180px;
+        height: 60px;
+        
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 30px;
+        line-height: 47px;
+        /* display: flex; */
+        align-items: center;
+        text-align: center;
+        text-transform: uppercase;
+    
+        color: #ECECEC;
+    }
+    /* 
+    input {
+        background: #E3E3E3;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 10px;
+        text-align: center;
+        width: auto;
+        height: 50px;
+        display: flex;
+        width: 600px;
+    } */
+    
