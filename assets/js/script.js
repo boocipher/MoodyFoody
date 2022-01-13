@@ -1,7 +1,7 @@
 //We need to target these variables once their respective elements are added to the HTML
 var locationInput = "austin"   //string, can be zip code, city, or current address
 var priceRangeInput = "2" //1 = $, 2 = $$, 3 = $$$, 4 = $$$$
-var distanceInput = 10000  //in meters max is 40000 meters 
+var distanceInput = 10000  //in meters max is 40000 meters
 var foodTypeInput = "sit-down italian"  //fastfood-sitdown-
 var timeInput = '&open_now=true'    //now, breakfast,lunch,dinner //if user selects open now, then add '&open_now=true' to query string, if user selects time then add '&open_at=[time(int)]
 
@@ -36,28 +36,53 @@ var Bearer = 'Bearer ' + APIKEY   //needed for authentication header
     }
     console.log("Below are search results that will be appended to the page")
     console.log(searchResultsArray);
+    displayMap()
   })
 }
 
-//Responsible for displaying map on results.html
+//Responsible for displaying map on results.html and fav.html
+function displayMap() {
 let map;
+const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" //needed for marker labels
 
+initMap()
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 30.307613, lng: -97.7509029 },
+    center: { lat: 30.307613, lng: -97.7509029 }, //determines center of map
     zoom: 10,
-  }
+    }
   );
+  var marker
+  for (var i = 0; i<searchResultsArray.length; i++) {  //for loop to iterate through searchResultsArray
+    console.log("Adding '"+labels.charAt(i)+ "' Marker to map with coordinates: ");
+    console.log(searchResultsArray[i].location);
+    var LatLng = {
+      lat: searchResultsArray[i].location[1], //pulls latitude from searchResultsArray
+      lng: searchResultsArray[i].location[0], //pulls longitude from searchResultsArray
+    };
+    var contentString = searchResultsArray[i].restaurantName
+    console.log(contentString);
 
-  var myLatLng = { lat: 30.3159319310134, lng: -97.7336796197883 }
-  new google.maps.Marker({
-    position: myLatLng,
-    map,
-    title: "Hello World!",
-  });
+    var marker = new google.maps.Marker({  //places marker
+      position: LatLng,
+      label: labels.charAt(i),
+      map,
+      title: searchResultsArray[i].restaurantName,
+    });
+
+    //displays window that details restaurant name if marker is clicked
+    //based off code from https://stackoverflow.com/questions/11106671/google-maps-api-multiple-markers-with-infowindows
+    var content = searchResultsArray[i].restaurantName
+    var infoWindow = new google.maps.InfoWindow()
+    google.maps.event.addListener(marker,'click', (function(marker,content,infoWindow) {
+      return function() {
+        infoWindow.setContent(content)
+        infoWindow.open(map,marker);
+      };
+    })(marker,content,infoWindow))
 }
-
-
+}
+}
 
 
 //SCRIPT FILE 1
@@ -97,3 +122,5 @@ function initMap() {
   
   
   //We need to convert locationInput to latitude and longitude using either Google Maps API (You will need to look up how to do this on docs) or you can use OpenWeatherMap or another API.
+
+
