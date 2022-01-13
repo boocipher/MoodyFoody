@@ -100,7 +100,6 @@ function initMap() {
 }
 }
 
-
 //SCRIPT FILE 1
 //Target specific elements on our form to recieve values inputted the user
   // var locationInput 
