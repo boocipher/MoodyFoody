@@ -9,19 +9,19 @@ var searchResultsArray = []   //will store all parsed data from Yelp API pull
 
 var userLocationLatLng        //will store coordinates of locationInput
 
-geoLocation()
-function geoLocation() {  //google API call to convert address/city/zipcode/etc to coordinates
-  fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+locationInput+'&key=AIzaSyC2zgWJRoeij-FPFj_I39eZ9oDHPcXlQoc')
-.then(function(response) {
-  return response.json();
-}).then(function(data) {
-  console.log("-------Google Geolocation Call-------");
-  console.log(data);
-  userLocationLatLng = data.results[0].geometry.location;
-  console.log("Below are the coordinates of the user's location input");
-  console.log(userLocationLatLng);
-})
-}
+// geoLocation()
+// function geoLocation() {  //google API call to convert address/city/zipcode/etc to coordinates
+//   fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+locationInput+'&key=AIzaSyC2zgWJRoeij-FPFj_I39eZ9oDHPcXlQoc')
+// .then(function(response) {
+//   return response.json();
+// }).then(function(data) {
+//   console.log("-------Google Geolocation Call-------");
+//   console.log(data);
+//   userLocationLatLng = data.results[0].geometry.location;
+//   console.log("Below are the coordinates of the user's location input");
+//   console.log(userLocationLatLng);
+// })
+// }
 
 yelpCallAPI()
 function yelpCallAPI() {
@@ -52,53 +52,53 @@ var Bearer = 'Bearer ' + APIKEY   //needed for authentication header
     }
     console.log("Below are search results that will be appended to the page")
     console.log(searchResultsArray);
-    displayMap()
+    // displayMap()
   })
 }
 
 //Responsible for displaying map on results.html and fav.html
-function displayMap() {
-let map;
-const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" //needed for marker labels
+// function displayMap() {
+// let map;
+// const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" //needed for marker labels
 
-initMap()
-function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: userLocationLatLng, //determines center of map (user location)
-    zoom: 10,
-    }
-  );
-  var marker
-  for (var i = 0; i<searchResultsArray.length; i++) {  //for loop to iterate through searchResultsArray
-    console.log("Adding '"+labels.charAt(i)+ "' Marker to map with coordinates: ");
-    console.log(searchResultsArray[i].location);
-    var LatLng = {
-      lat: searchResultsArray[i].location[1], //pulls latitude from searchResultsArray
-      lng: searchResultsArray[i].location[0], //pulls longitude from searchResultsArray
-    };
-    var contentString = searchResultsArray[i].restaurantName
-    console.log(contentString);
+// initMap()
+// function initMap() {
+//   map = new google.maps.Map(document.getElementById("map"), {
+//     center: userLocationLatLng, //determines center of map (user location)
+//     zoom: 10,
+//     }
+//   );
+//   var marker
+//   for (var i = 0; i<searchResultsArray.length; i++) {  //for loop to iterate through searchResultsArray
+//     console.log("Adding '"+labels.charAt(i)+ "' Marker to map with coordinates: ");
+//     console.log(searchResultsArray[i].location);
+//     var LatLng = {
+//       lat: searchResultsArray[i].location[1], //pulls latitude from searchResultsArray
+//       lng: searchResultsArray[i].location[0], //pulls longitude from searchResultsArray
+//     };
+//     var contentString = searchResultsArray[i].restaurantName
+//     console.log(contentString);
 
-    var marker = new google.maps.Marker({  //places marker
-      position: LatLng,
-      label: labels.charAt(i),
-      map,
-      title: searchResultsArray[i].restaurantName,
-    });
+//     var marker = new google.maps.Marker({  //places marker
+//       position: LatLng,
+//       label: labels.charAt(i),
+//       map,
+//       title: searchResultsArray[i].restaurantName,
+//     });
 
-    //displays window that details restaurant name if marker is clicked
-    //based off code from https://stackoverflow.com/questions/11106671/google-maps-api-multiple-markers-with-infowindows
-    var content = searchResultsArray[i].restaurantName
-    var infoWindow = new google.maps.InfoWindow()
-    google.maps.event.addListener(marker,'click', (function(marker,content,infoWindow) {
-      return function() {
-        infoWindow.setContent(content)
-        infoWindow.open(map,marker);
-      };
-    })(marker,content,infoWindow))
-}
-}
-}
+//     //displays window that details restaurant name if marker is clicked
+//     //based off code from https://stackoverflow.com/questions/11106671/google-maps-api-multiple-markers-with-infowindows
+//     var content = searchResultsArray[i].restaurantName
+//     var infoWindow = new google.maps.InfoWindow()
+//     google.maps.event.addListener(marker,'click', (function(marker,content,infoWindow) {
+//       return function() {
+//         infoWindow.setContent(content)
+//         infoWindow.open(map,marker);
+//       };
+//     })(marker,content,infoWindow))
+// }
+// }
+// }
 
 
 //SCRIPT FILE 1
