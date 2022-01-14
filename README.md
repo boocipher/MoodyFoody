@@ -1,5 +1,5 @@
 # MoodyFoody
-MoodyFoody is a food locator app that allows you to find restaurants near you by using various filters such as:
+MoodyFoody is a food locator app that allows you to find restaurants near you, using various filters such as:
 - Location
 - Price Range
 - Distance
