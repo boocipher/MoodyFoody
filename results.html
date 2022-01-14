@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="assets/css/results.css">
+
     <title>MoodyFoody</title>
+    
 </head>
 <body>
     <!-- container: h1 -->
-    <div class="centerContainer">
+    <div class="center container">
         <h1> MoodyFoody </h1>
     </div>
     <!-- flex container row : 
@@ -21,14 +29,18 @@
                 2. flex-container colum: Google map -- div with id=Map is the container where the map will load-->
     <div class= "main-container">
                 <div id="results-container" class="flex-column">
-                    <div class="result-box">Result 1</div>
-                    <div class="result-box">Result 2</div>
-                    <div class="result-box">Result 3</div>
-                    <div class="result-box">Result 4</div>
-                    <div class="result-box">Result 5</div>
+                    <!-- keep result-box (important) card-horizontal is temporary -->
+                    <div class="result-box card horizontal">
+                        Result 1
+                    </div>
+                    
+                    <div class="result-box card horizontal">Result 2</div>
+                    <div class="result-box card horizontal">Result 3</div>
+                    <div class="result-box card horizontal">Result 4</div>
+                    <div class="result-box card horizontal">Result 5</div>
                     <!--  -->
-
                 </div>
+
                 <div id="map"></div>
 
     </div>

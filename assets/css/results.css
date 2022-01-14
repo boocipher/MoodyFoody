@@ -1,11 +1,15 @@
-.centerContainer {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 24px;
+h1{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 90px;
+    line-height: 94px;
+    align-items: center;
     text-align: center;
+    letter-spacing: 0.04em;
+
+    color: #000000;
+    margin-bottom: 3%;
 }
 
 
@@ -21,23 +25,23 @@
 #map {
     height: 300px;
     width:400px;
+    border-radius: 24px;
+    border: 1px solid black;
 }
 
 .main-container {
     display: flex;
-    /* flex-direction: row; not doin anything */
-    flex-wrap: nowrap;
-    /* align-items: flex-start; */
+    /* flex-wrap: nowrap; */
+    align-items: flex-start;
     justify-content: space-evenly;
-    border: 1px solid #000000;
+    /* border: 1px solid #000000; */
     box-sizing: border-box;
-    border-radius: 24px;
+    /* border-radius: 24px; */
 }
 
 #results-container {
     flex-direction: column;
     align-items: left;
-    border: 1px solid #000000;
     box-sizing: border-box;
     border-radius: 24px;
     width: 50%;
@@ -47,9 +51,10 @@
 
 .result-box {
     border: 1px solid #000000;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     border-radius: 24px;
     padding: 10px;
     margin: 10px;
-    
+    background: #E3E3E3;
+    /* display: flex; */
 }
