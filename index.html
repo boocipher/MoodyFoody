@@ -5,62 +5,99 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
+
     <title>MoodyFoody</title>
+
 </head>
 <body>
-    <div class=" center container">
+    <div class="center container">
             <h1> MoodyFoody </h1>
     </div>
     <!-- Add container for logo at later time-->
     <div class= "center-align container">
-        <div class= "col s-1">
-            <h3> Find your Perfect Resturan</h3>
-            <h5> fill out this quick survey to find your ideal resturant </h5>
-        </div>
         <div class="col s1">
-            <form class= "center-block container">
-                <!-- auto complete form-->
-                <div class="input-field col s1">
-                    <input value="" id="locationInput" type="text" class="validate"> LOCATION</input>
-                    <!-- <label class="active" for="locationInput">LOCATION</label> -->
+            <form class= "center-block container" action="results.html">
+                <!-- form heading -->
+                <div class= "col ">
+                    <h3> Find your Perfect Resturant</h3>
+                    <h5> fill out this quick survey to find your ideal resturant </h5>
+                </div>
+
+                <!-- Location -->
+                    <div class="input-field col" ID="location">
+                        <input placeholder="LOCATION" id="locationInput" type="text" class="validate"> </input>
+                        <!-- <label class="active" for="locationInput">LOCATION</label> -->
+                    </div>
+    
+                <!-- inclue javascript to appear # for range finder-->
+                <!-- Price Range -->
+                <div class="range-field" id="priceRange">
+                    <p>PRICE RANGE</p>
+                    <input type="range" id="priceRangeInput" min="$" max="$$$$"/>
                 </div>
                 <!-- inclue javascript to appear # for range finder-->
-                <div class="range-field">
-                    <label class="active" for="priceRangeInput">PRICE RANGE</label>
-                    <input type="range" id="priceRangeInput" min="$" max="$$$$" />
-                </div>
-                                <!-- inclue javascript to appear # for range finder-->
-
-                <div class="range-field">
-                    <label class="active" for="distanceInput">DISTANCE</label>
+                <!-- Distance -->
+                <div class="range-field" id="distance">
+                    <p>DISTANCE</p>
                     <input type="range" id="distanceInput" min="1" max="20"/>
                 </div>
-                <div class="col s1">
-                    <select class="browser-default" id="foodTypeInput">
-                    <option value="" disabled selected> RESTURANT TYPE</option>
+
+                <!-- auto complete form-->
+                <!-- Food Genre -->
+                <div class="input-field col" ID="foodGenre">
+                    <label class="active" for="foodTypeInput"> </label>
+                    <input placeholder="GENRE" id="foodTypeInput" type="text" class="validate"></input>
+                </div>
+
+                <!-- Type -->
+                <!-- I might need to rewrite the options code -->
+                <div class="flip" onclick="resFunction()">
+                    <p> RESTURANT TYPE</p>
+                </div>
+
+                <div class="col s1" id="resturantType"  style= "display: none;">
+                    <!-- <select class="dropdownOptions" id="foodTypeInput"> -->
+                    <!-- <option value="" disabled selected> RESTURANT TYPE</option> -->
                     <option value="1">Sitdown</option>
                     <option value="2">Takeaway</option>
+                    <script>
+                        function resFunction() {
+                          document.getElementById("resturantType").style.display = "block";
+                        }
+                    </script>
                 </div>
-                <!-- auto complete form-->
-                <div class="input-field col s1">
-                    <!-- <label class="active" for="foodTypeInput"> FOOD GENRE </label> -->
-                    <input value="" id="foodTypeInput" type="text" class="validate"> FOOD GENRE</input>
-                </div>
-                <div class="col s1">
-                    <select class="browser-default" id="timeInput">
-                    <option value="" disabled selected> WHEN</option>
-                    <option value="1">Right Now</option>
-                    <option value="2">Breakfast</option>
-                    <option value="3">Lunch</option>
-                    <option value="4">Dinner</option>
-                </div>
-                <div ID="submitBtn">
-                    <input class="btn waves-effect waves-light" type="submit" name="action"> </input>
-                </div>
-            </form>
 
+
+                <div class="flip" onclick="timeFunction()">
+                    <p> WHEN </p>
+                </div>
+                <div class="col s1" ID="timeInput"  style= "display: none;">
+                    <!-- <select class="dropdownOptions" id="timeInput"> -->
+                        <!-- <option value="" disabled selected> WHEN</option> -->
+                        <option value="1">Right Now</option>
+                        <option value="2">Breakfast</option>
+                        <option value="3">Lunch</option>
+                        <option value="4">Dinner</option>
+                    <script>
+                        function timeFunction() {
+                          document.getElementById("timeInput").style.display = "block";
+                        }
+                    </script>
+                </div>
+                
+                <!-- submit button -->
+                <input class="btn" ID="submitBtn" type="submit" name="action"> </input>
+            </form>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript" src="assets/js/script.js"></script>
 </body>
 </html>

@@ -1,47 +1,201 @@
-/* .centerContainer {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 24px;
-    text-align: center;
-/* } */
 
-
-
-/* #map {
-    height: 300px;
-    width:400px;
-}
-
-.main-container {
-    display: flex; */
-    /* flex-direction: row; not doin anything */
-    /* flex-wrap: nowrap;
-    /* align-items: flex-start; */
-    /* justify-content: space-evenly;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 24px;
-} */
-/* 
-#results-container {
-    flex-direction: column;
-    align-items: left;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 24px;
-    width: 50%;
-    overflow: auto;
-    height: 300px; */
-/* } */
-
-/* .result-box {
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 24px;
-    padding: 10px;
-    margin: 10px;
+    /* heading: MoodyFoody */
+    h1 {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 90px;
+        line-height: 94px;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 0.04em;
     
-}  */
+        color: #000000;
+        margin-bottom: 3%;
+    }
+    /* form for resturant search */
+    form{
+        background: #F3F3F3;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 25px;
+        padding: 5%;
+    
+    }
+    
+    h3 {
+    
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 48px;
+        line-height: 56px;
+        align-items: center;
+        text-align: center;
+        text-transform: capitalize;
+    
+        color: #4B4B4B;
+    }
+    
+    h5{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 28px;
+        line-height: 33px;
+        align-items: center;
+        text-align: center;
+    
+        color: #5A5A5A;
+    }
+
+    p {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 25px;
+        line-height: 35px;
+        /* display: flex; */
+        /* align-items: center; */
+        /* text-align: center; */
+        text-transform: uppercase;
+    
+        color: #575757;
+    }
+    
+    /* form controls: */
+    
+    #location {
+        background: #E3E3E3;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 10px;
+        margin: 3%;
+    }
+
+    #locationInput {
+        text-align: center;
+    }
+    
+    
+    /* add in active click and hover features */
+    ::placeholder {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 25px;
+        line-height: 35px;
+        /* display: flex; */
+        /* align-items: center; */
+        text-align: center;
+        text-transform: uppercase;
+    
+        color: #575757;
+    }
+    
+    .flip {
+        background: #E3E3E3;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 10px;
+        text-align: center;
+        padding: 3%;
+        margin: 3%;
+
+
+    }
+
+    #priceRange {
+        background: #E3E3E3;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 10px;
+        margin: 3%;
+    }
+    
+    /* type {
+        color: #929292;
+        width: 454px;
+        height: 20px;
+    
+    } */
+    
+    #distance {
+        background: #E3E3E3;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 10px;
+        margin: 3%;
+    }
+    
+    #resturantType {
+        background: #E3E3E3;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 10px;
+        margin: 3%;
+    }
+    
+    #foodGenre {
+        background: #E3E3E3;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 10px;
+        margin: 3%;
+
+    }
+    #foodTypeInput {
+        text-align: center;
+    }
+    
+    #timeInput{
+        background: #E3E3E3;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 10px;
+        margin: 3%;
+
+
+    }
+    
+    #submitBtn {
+        background: #9F9F9F;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 6px;
+        /* width: 180px; */
+        height: 60px;
+        
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 25px;
+        line-height: 47px;
+        /* display: flex; */
+        align-items: center;
+        text-align: center;
+        text-transform: uppercase;
+    
+        color: #ECECEC;
+
+    }
+    
+    /* input {
+        background: #E3E3E3;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 10px;
+        text-align: center;
+        width: auto;
+        height: 60px;
+        display: flex;
+        width: 530px;
+    } */
+
+    input:hover {
+        background: #d4d4d4;
+    }
+
+    input[type=”range”]::-webkit-slider-thumb {
+        color: red;
+    }

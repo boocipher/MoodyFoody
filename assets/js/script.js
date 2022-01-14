@@ -1,16 +1,53 @@
 //We need to target these variables once their respective elements are added to the HTML
-var locationInput = "austin"   //string, can be zip code, city, or current address
+var locationInput = "Austin"   //string, can be zip code, city, or current address
 var priceRangeInput = "2" //1 = $, 2 = $$, 3 = $$$, 4 = $$$$
-var distanceInput = 10000  //in meters max is 40000 meters 
-var foodTypeInput = "sit-down italian"  //fastfood-sitdown-
+var distanceInput = 5  //in meters max is 40000 meters 
+var foodTypeInput = "sit-down-italian"  //fastfood-sitdown-
 var timeInput = '&open_now=true'    //now, breakfast,lunch,dinner //if user selects open now, then add '&open_now=true' to query string, if user selects time then add '&open_at=[time(int)]
-
+var distanceInputMeters 
 var searchResultsArray = []   //will store all parsed data from Yelp API pull
+
+$('#submitButton').on('submit',function(event) {
+		event.preventDefault();
+		locationInput = $('#location').val();
+		priceRangeInput = $('#priceRange').val();
+		distanceInput = $('#distance').val();
+		foodTypeInput = $('#foodTypeInput').val() + $('#foodGenre').val();
+		timeInput = $('#timeInput').val();
+  })
+
+function lengthConverter() {
+  // distanceInput = distanceInput.val()
+  distanceInputMeters = (distanceInput/0.00062137).toFixed(0).toString();
+  console.log (typeof(distanceInputMeters)) //converts miles to meters from user input
+}
+lengthConverter()
+
+var userLocationLatLng        //will store coordinates of locationInput
+
+// geoLocation()
+// function geoLocation() {  //google API call to convert address/city/zipcode/etc to coordinates
+//   fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+locationInput+'&key=AIzaSyC2zgWJRoeij-FPFj_I39eZ9oDHPcXlQoc')
+// .then(function(response) {
+//   return response.json();
+// }).then(function(data) {
+//   console.log("-------Google Geolocation Call-------");
+//   console.log(data);
+//   userLocationLatLng = data.results[0].geometry.location;
+//   console.log("Below are the coordinates of the user's location input");
+//   console.log(userLocationLatLng);
+// })
+// }
+
+function removeSpaces (locationInput) { //removeSpaces from input and returns "+" instead for google geolocation api//
+  return locationInput.replace(/\s+/g, '+');
+}
 
 yelpCallAPI()
 function yelpCallAPI() {
 //the first half of this url is needed because of a CORS error
-var yelpUrl = 'https://salty-mountain-68764.herokuapp.com/https://api.yelp.com/v3/businesses/search?price='+ priceRangeInput +'&term='+foodTypeInput+'&location=' + locationInput + timeInput
+var yelpUrl = 'https://salty-mountain-68764.herokuapp.com/https://api.yelp.com/v3/businesses/search?radius='+ distanceInputMeters +'&price='+ priceRangeInput +'&term='+foodTypeInput+'&location=' + locationInput + timeInput
+console.log (yelpUrl)
 var APIKEY = 'Dm03wv4YdEsLaKufEPshYjbDKuUxpKY621FUmPuz_y172PgIO3devn-UJtkkEPc6O7WuSgsyAc9PZOsA1kySWKeAb3mZb41NPezvv9taNTuHaSeuDkWNqrUI8KfbYXYx'
 var Bearer = 'Bearer ' + APIKEY   //needed for authentication header
 
@@ -36,36 +73,81 @@ var Bearer = 'Bearer ' + APIKEY   //needed for authentication header
     }
     console.log("Below are search results that will be appended to the page")
     console.log(searchResultsArray);
+    // displayMap()
   })
 }
 
-//Responsible for displaying map on results.html
-let map;
+//Responsible for displaying map on results.html and fav.html
+// function displayMap() {
+// let map;
+// const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" //needed for marker labels
 
-function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 30.307613, lng: -97.7509029 },
-    zoom: 10,
-  }
-  );
+// initMap()
+// function initMap() {
+//   map = new google.maps.Map(document.getElementById("map"), {
+//     center: userLocationLatLng, //determines center of map (user location)
+//     zoom: 10,
+//     }
+//   );
+//   var marker
+//   for (var i = 0; i<searchResultsArray.length; i++) {  //for loop to iterate through searchResultsArray
+//     console.log("Adding '"+labels.charAt(i)+ "' Marker to map with coordinates: ");
+//     console.log(searchResultsArray[i].location);
+//     var LatLng = {
+//       lat: searchResultsArray[i].location[1], //pulls latitude from searchResultsArray
+//       lng: searchResultsArray[i].location[0], //pulls longitude from searchResultsArray
+//     };
+//     var contentString = searchResultsArray[i].restaurantName
+//     console.log(contentString);
 
-  var myLatLng = { lat: 30.3159319310134, lng: -97.7336796197883 }
-  new google.maps.Marker({
-    position: myLatLng,
-    map,
-    title: "Hello World!",
-  });
-}
+//     var marker = new google.maps.Marker({  //places marker
+//       position: LatLng,
+//       label: labels.charAt(i),
+//       map,
+//       title: searchResultsArray[i].restaurantName,
+//     });
+
+//     //displays window that details restaurant name if marker is clicked
+//     //based off code from https://stackoverflow.com/questions/11106671/google-maps-api-multiple-markers-with-infowindows
+//     var content = searchResultsArray[i].restaurantName
+//     var infoWindow = new google.maps.InfoWindow()
+//     google.maps.event.addListener(marker,'click', (function(marker,content,infoWindow) {
+//       return function() {
+//         infoWindow.setContent(content)
+//         infoWindow.open(map,marker);
+//       };
+//     })(marker,content,infoWindow))
+// }
+// }
+// }
+
+//LOCAL STORAGE COMPONENT
+var savedSearchResultsArray = JSON.parse(localStorage.getItem("savedSearches")) || []; //if savedSearch item exists in local storage, pull it.  Otherwise, initialize an empty array
+console.log(savedSearchResultsArray)
+// $('parentContainer').on('click', $('#saveButton'), function() {
+//   savedSearchResultsArray.push(searchResult);   //places searchResult object into savedSearchResultsArray
+//   localStorage.setItem("savedSearches", JSON.stringify(savedSearchResultsArray));  //saves updated savedSearchResultsArray to local storage
+// })
 
 
+//LOCAL STORAGE PSEUDOCODE
+//upon page load, favorites array will be parsed from local storage to initialize that variable (var savedSearchResultsArray)
 
+//user will click favorite button
+  //target save button
+  //Will need to use event delegation
+  //pushes that restaurant search result object into var savedSearchResultsArray 
+  //savedSearchResultsArray will be re-added to local storage
+
+//when "show favorites" is clicked--user is redirected to fav.html
+  //fav.html will append all elements from savedSearchResultsArray into page.
 
 //SCRIPT FILE 1
 //Target specific elements on our form to recieve values inputted the user
   // var locationInput 
   // var priceRangeInput
   // var distanceInput 
-    //user input miles, needs to be converted to meters (There is a max look up in DOCS)
+//user input miles, needs to be converted to meters (There is a max look up in DOCS). Currently lines 10 thru 15.SD.
   // var foodTypeInput
   // var timeInput   
     //Pulls values when the user press submit
@@ -97,3 +179,5 @@ function initMap() {
   
   
   //We need to convert locationInput to latitude and longitude using either Google Maps API (You will need to look up how to do this on docs) or you can use OpenWeatherMap or another API.
+
+
