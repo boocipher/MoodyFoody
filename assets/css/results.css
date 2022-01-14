@@ -6,28 +6,21 @@
     box-sizing: border-box;
     border-radius: 24px;
     text-align: center;
+    padding: 10, 0, 30, 0;
 }
-
-
-/* .results-container {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 24px;
-} */
 
 
 #map {
     height: 300px;
     width:400px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 24px;
 }
 
 .main-container {
     display: flex;
-    /* flex-direction: row; not doin anything */
     flex-wrap: nowrap;
-    /* align-items: flex-start; */
     justify-content: space-evenly;
     border: 1px solid #000000;
     box-sizing: border-box;
@@ -43,6 +36,7 @@
     width: 50%;
     overflow: auto;
     height: 300px;
+    padding: 5, 0, 5, 0;
 }
 
 .result-box {
@@ -51,5 +45,9 @@
     border-radius: 24px;
     padding: 10px;
     margin: 10px;
-    
+}
+
+.flex-row {
+    display: flex;
+    justify-content: space-between;
 }
