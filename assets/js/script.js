@@ -7,6 +7,14 @@ var timeInput = '&open_now=true'    //now, breakfast,lunch,dinner //if user sele
 var distanceInputMeters 
 var searchResultsArray = []   //will store all parsed data from Yelp API pull
 
+$('#submitButton').on('submit',function(event) {
+		event.preventDefault();
+		locationInput = $('#location').val();
+		priceRangeInput = $('#priceRange').val();
+		distanceInput = $('#distance').val();
+		foodTypeInput = $('#foodTypeInput').val() + $('#foodGenre').val();
+		timeInput = $('#timeInput').val();
+  })
 
 function lengthConverter() {
   // distanceInput = distanceInput.val()
