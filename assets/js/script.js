@@ -109,6 +109,27 @@ var Bearer = 'Bearer ' + APIKEY   //needed for authentication header
 // }
 // }
 
+//LOCAL STORAGE COMPONENT
+var savedSearchResultsArray = JSON.parse(localStorage.getItem("savedSearches")) || []; //if savedSearch item exists in local storage, pull it.  Otherwise, initialize an empty array
+console.log(savedSearchResultsArray)
+// $('parentContainer').on('click', $('#saveButton'), function() {
+//   savedSearchResultsArray.push(searchResult);   //places searchResult object into savedSearchResultsArray
+//   localStorage.setItem("savedSearches", JSON.stringify(savedSearchResultsArray));  //saves updated savedSearchResultsArray to local storage
+// })
+
+
+//LOCAL STORAGE PSEUDOCODE
+//upon page load, favorites array will be parsed from local storage to initialize that variable (var savedSearchResultsArray)
+
+//user will click favorite button
+  //target save button
+  //Will need to use event delegation
+  //pushes that restaurant search result object into var savedSearchResultsArray 
+  //savedSearchResultsArray will be re-added to local storage
+
+//when "show favorites" is clicked--user is redirected to fav.html
+  //fav.html will append all elements from savedSearchResultsArray into page.
+
 //SCRIPT FILE 1
 //Target specific elements on our form to recieve values inputted the user
   // var locationInput 
