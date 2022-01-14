@@ -3,13 +3,14 @@
         font-family: Roboto;
         font-style: normal;
         font-weight: 300;
-        font-size: 80px;
+        font-size: 90px;
         line-height: 94px;
         align-items: center;
         text-align: center;
         letter-spacing: 0.04em;
     
         color: #000000;
+        margin-bottom: 3%;
     }
     /* form for resturant search */
     form{
@@ -46,6 +47,20 @@
     
         color: #5A5A5A;
     }
+
+    p {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 25px;
+        line-height: 35px;
+        /* display: flex; */
+        /* align-items: center; */
+        /* text-align: center; */
+        text-transform: uppercase;
+    
+        color: #575757;
+    }
     
     /* form controls: */
     
@@ -54,6 +69,11 @@
         border: 1px solid #000000;
         box-sizing: border-box;
         border-radius: 10px;
+        margin: 3%;
+    }
+
+    #locationInput {
+        text-align: center;
     }
     
     
@@ -62,7 +82,7 @@
         font-family: Roboto;
         font-style: normal;
         font-weight: normal;
-        font-size: 20px;
+        font-size: 25px;
         line-height: 35px;
         /* display: flex; */
         /* align-items: center; */
@@ -72,14 +92,24 @@
         color: #575757;
     }
     
+    .flip {
+        background: #E3E3E3;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 10px;
+        text-align: center;
+        padding: 3%;
+        margin: 3%;
+
+
+    }
+
     #priceRange {
         background: #E3E3E3;
         border: 1px solid #000000;
         box-sizing: border-box;
         border-radius: 10px;
-    }
-    
-    #priceRangeInput{
+        margin: 3%;
     }
     
     /* type {
@@ -94,6 +124,7 @@
         border: 1px solid #000000;
         box-sizing: border-box;
         border-radius: 10px;
+        margin: 3%;
     }
     
     #resturantType {
@@ -101,6 +132,7 @@
         border: 1px solid #000000;
         box-sizing: border-box;
         border-radius: 10px;
+        margin: 3%;
     }
     
     #foodGenre {
@@ -108,13 +140,21 @@
         border: 1px solid #000000;
         box-sizing: border-box;
         border-radius: 10px;
+        margin: 3%;
+
+    }
+    #foodTypeInput {
+        text-align: center;
     }
     
-    #time{
+    #timeInput{
         background: #E3E3E3;
         border: 1px solid #000000;
         box-sizing: border-box;
         border-radius: 10px;
+        margin: 3%;
+
+
     }
     
     #submitBtn {
@@ -122,13 +162,13 @@
         border: 1px solid #000000;
         box-sizing: border-box;
         border-radius: 6px;
-        width: 180px;
+        /* width: 180px; */
         height: 60px;
         
         font-family: Roboto;
         font-style: normal;
         font-weight: normal;
-        font-size: 30px;
+        font-size: 25px;
         line-height: 47px;
         /* display: flex; */
         align-items: center;
@@ -136,17 +176,25 @@
         text-transform: uppercase;
     
         color: #ECECEC;
+
     }
-    /* 
-    input {
+    
+    /* input {
         background: #E3E3E3;
         border: 1px solid #000000;
         box-sizing: border-box;
         border-radius: 10px;
         text-align: center;
         width: auto;
-        height: 50px;
+        height: 60px;
         display: flex;
-        width: 600px;
+        width: 530px;
     } */
-    
+
+    input:hover {
+        background: #d4d4d4;
+    }
+
+    input[type=”range”]::-webkit-slider-thumb {
+        color: red;
+    }
