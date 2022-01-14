@@ -1,11 +1,19 @@
 //We need to target these variables once their respective elements are added to the HTML
 var locationInput = "Austin"   //string, can be zip code, city, or current address
 var priceRangeInput = "2" //1 = $, 2 = $$, 3 = $$$, 4 = $$$$
-var distanceInput = 10000  //in meters max is 40000 meters
+var distanceInput = 5  //in meters max is 40000 meters 
 var foodTypeInput = "sit-down italian"  //fastfood-sitdown-
 var timeInput = '&open_now=true'    //now, breakfast,lunch,dinner //if user selects open now, then add '&open_now=true' to query string, if user selects time then add '&open_at=[time(int)]
-
+var distanceInputMeters 
 var searchResultsArray = []   //will store all parsed data from Yelp API pull
+
+
+function lengthConverter() {
+  // distanceInput = distanceInput.val()
+  distanceInputMeters = (distanceInput/0.00062137).toFixed(0).toString();
+  console.log (typeof(distanceInputMeters)) //converts miles to meters from user input
+}
+lengthConverter()
 
 var userLocationLatLng        //will store coordinates of locationInput
 
@@ -26,7 +34,8 @@ var userLocationLatLng        //will store coordinates of locationInput
 yelpCallAPI()
 function yelpCallAPI() {
 //the first half of this url is needed because of a CORS error
-var yelpUrl = 'https://salty-mountain-68764.herokuapp.com/https://api.yelp.com/v3/businesses/search?price='+ priceRangeInput +'&term='+foodTypeInput+'&location=' + locationInput + timeInput
+var yelpUrl = 'https://salty-mountain-68764.herokuapp.com/https://api.yelp.com/v3/businesses/search?radius='+ distanceInputMeters +'&price='+ priceRangeInput +'&term='+foodTypeInput+'&location=' + locationInput + timeInput
+console.log (yelpUrl)
 var APIKEY = 'Dm03wv4YdEsLaKufEPshYjbDKuUxpKY621FUmPuz_y172PgIO3devn-UJtkkEPc6O7WuSgsyAc9PZOsA1kySWKeAb3mZb41NPezvv9taNTuHaSeuDkWNqrUI8KfbYXYx'
 var Bearer = 'Bearer ' + APIKEY   //needed for authentication header
 
@@ -126,7 +135,7 @@ console.log(savedSearchResultsArray)
   // var locationInput 
   // var priceRangeInput
   // var distanceInput 
-    //user input miles, needs to be converted to meters (There is a max look up in DOCS)
+//user input miles, needs to be converted to meters (There is a max look up in DOCS). Currently lines 10 thru 15.SD.
   // var foodTypeInput
   // var timeInput   
     //Pulls values when the user press submit
