@@ -2,7 +2,7 @@
 var locationInput = "Austin"   //string, can be zip code, city, or current address
 var priceRangeInput = "2" //1 = $, 2 = $$, 3 = $$$, 4 = $$$$
 var distanceInput = 5  //in meters max is 40000 meters 
-var foodTypeInput = "sit-down italian"  //fastfood-sitdown-
+var foodTypeInput = "sit-down-italian"  //fastfood-sitdown-
 var timeInput = '&open_now=true'    //now, breakfast,lunch,dinner //if user selects open now, then add '&open_now=true' to query string, if user selects time then add '&open_at=[time(int)]
 var distanceInputMeters 
 var searchResultsArray = []   //will store all parsed data from Yelp API pull
@@ -38,6 +38,10 @@ var userLocationLatLng        //will store coordinates of locationInput
 //   console.log(userLocationLatLng);
 // })
 // }
+
+function removeSpaces (locationInput) { //removeSpaces from input and returns "+" instead for google geolocation api//
+  return locationInput.replace(/\s+/g, '+');
+}
 
 yelpCallAPI()
 function yelpCallAPI() {
