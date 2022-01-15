@@ -1,13 +1,28 @@
-/* .centerContainer {
+h1{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 90px;
+    line-height: 94px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: #000000;
+    margin-bottom: 3%;
+}
+
+h5 {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 35px;
+    line-height: 46px;
     display: flex;
-    flex-direction: column;
-    width: 100%;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 24px;
+    /* align-items: center; */
+    float: inline-start;
     text-align: center;
     padding: 10, 0, 30, 0;
-} */
+}
 
 /* heading: MoodyFoody */
 h1 {
@@ -19,38 +34,90 @@ h1 {
     align-items: center;
     text-align: center;
     letter-spacing: 0.04em;
-
     color: #000000;
     margin-bottom: 3%;
+    margin:0;
+    padding: 0;   
+    color: #494949;
+
+}
+.row {
+    margin: 0;
+}
+
+h1,h2,h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+#price {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 35px;
+    display: flex;
+    /* margin:auto; */
+    /* align-items: center; */
+    text-align: center;
+    float: inline-start;
+}
+
+.col {
+    margin-left: auto ;
+    margin-right: auto ;
+}
+
+#rating{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 47px;
+    display: flex;
+    text-align: center;
+    color: #3F3F3F;
+}
+
+#map {
+    height: 500px;
+    width:600px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 24px;
 }
 
 .main-container {
     display: flex;
-    flex-wrap: nowrap;
+    /* flex-wrap: nowrap; */
+    align-items: flex-start;
     justify-content: space-evenly;
-    border: 1px solid #000000;
+    /* border: 1px solid #000000; */
     box-sizing: border-box;
-    border-radius: 24px;
+    /* border-radius: 24px; */
 }
 
 #results-container {
     flex-direction: column;
     align-items: left;
-    border: 1px solid #000000;
     box-sizing: border-box;
-    border-radius: 24px;
+    /* border-radius: 24px; */
     width: 50%;
     overflow: auto;
-    height: 300px;
-    padding: 5, 0, 5, 0;
+    /* height: 300px; */
+    padding: 0, 5, 0 ,5;
+    height: 500px;
 }
 
 .result-box {
     border: 1px solid #000000;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     border-radius: 24px;
     padding: 10px;
     margin: 10px;
+    background: #E3E3E3;
+    align-items: center;
+    /* display: flex; */
 }
 
 .flex-row {
@@ -99,3 +166,13 @@ label {
   .custom-checkbox input[type="checkbox"]:checked ~ .glyphicon-heart {
     opacity: 1;
   }
+
+#saveButton {
+    margin:auto;
+}
+
+.card {
+    box-shadow: none;
+    /* margin-bottom: 3%; */
+    height: 110px;
+}

@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Materialize Compiled and minified CSS -->
+    <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/results.css">
 
+
+    <link rel="stylesheet" href="assets/css/results.css">
     <title>MoodyFoody</title>
 
 </head>
@@ -87,16 +87,18 @@
                     
                 </div>
 
-             <!-- 2. flex-container colum: Google map -- div with id=Map is the container where the map will load -->
+             <!-- 2. flex-container column: Google map -- div with id=Map is the container where the map will load -->
         
                 <div id="map"></div>
 
+    </div>
 </body>
+            
 <!-- script needed for google maps API call -- "callback=initMap" calls the initMap function in script -->
-<!-- <script 
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2zgWJRoeij-FPFj_I39eZ9oDHPcXlQoc&libraries=places" 
-    async=false>
-</script> -->
+<script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2zgWJRoeij-FPFj_I39eZ9oDHPcXlQoc&libraries=places&callback=initMap" 
+    async=true>
+</script>
 <!-- jQuery script CDN -->
 <script 
     src="https://code.jquery.com/jquery-3.6.0.min.js" 
