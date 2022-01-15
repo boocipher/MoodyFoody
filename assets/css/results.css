@@ -176,3 +176,8 @@ label {
     /* margin-bottom: 3%; */
     height: 110px;
 }
+
+.flex-column {
+  display:flex;
+  flex-direction: column;
+}
