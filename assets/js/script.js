@@ -181,3 +181,4 @@ console.log(savedSearchResultsArray)
   //We need to convert locationInput to latitude and longitude using either Google Maps API (You will need to look up how to do this on docs) or you can use OpenWeatherMap or another API.
 
 
+  

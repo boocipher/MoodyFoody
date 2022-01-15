@@ -1,4 +1,4 @@
-.centerContainer {
+/* .centerContainer {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -7,15 +7,21 @@
     border-radius: 24px;
     text-align: center;
     padding: 10, 0, 30, 0;
-}
+} */
 
+/* heading: MoodyFoody */
+h1 {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 90px;
+    line-height: 94px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.04em;
 
-#map {
-    height: 300px;
-    width:400px;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 24px;
+    color: #000000;
+    margin-bottom: 3%;
 }
 
 .main-container {
@@ -51,3 +57,45 @@
     display: flex;
     justify-content: space-between;
 }
+
+label {
+    /* Presentation */
+    font-size: 48px
+  }
+  
+  /* Required Styling */
+  
+  label input[type="checkbox"] {
+    display: none;
+  }
+  
+  .custom-checkbox {
+    margin-left: 2em;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .custom-checkbox .glyphicon {
+    color: red;
+    position: absolute;
+    top: 0.4em;
+    left: -1.25em;
+    font-size: 0.75em;
+  }
+  
+  .custom-checkbox .glyphicon-heart-empty {
+    color: gray;
+  }
+  
+  .custom-checkbox .glyphicon-heart {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+  
+  .custom-checkbox:hover .glyphicon-heart{
+    opacity: 0.5;
+  }
+  
+  .custom-checkbox input[type="checkbox"]:checked ~ .glyphicon-heart {
+    opacity: 1;
+  }
