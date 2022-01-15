@@ -7,7 +7,6 @@ h1{
     align-items: center;
     text-align: center;
     letter-spacing: 0.04em;
-
     color: #000000;
     margin-bottom: 3%;
 }
@@ -22,15 +21,30 @@ h5 {
     /* align-items: center; */
     float: inline-start;
     text-align: center;
+    padding: 10, 0, 30, 0;
+}
+
+/* heading: MoodyFoody */
+h1 {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 90px;
+    line-height: 94px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: #000000;
+    margin-bottom: 3%;
     margin:0;
-    padding: 0;
-    
+    padding: 0;   
     color: #494949;
 
 }
 .row {
     margin: 0;
 }
+
 h1,h2,h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
@@ -48,14 +62,12 @@ h1,h2,h3, h4, h5, h6 {
     text-align: center;
     float: inline-start;
 }
-.col {
-    /* border: 1px solid black; */
-    /* text-align: center; */
 
-    /* float: none !important; */
+.col {
     margin-left: auto ;
     margin-right: auto ;
 }
+
 #rating{
     font-family: Roboto;
     font-style: normal;
@@ -63,11 +75,8 @@ h1,h2,h3, h4, h5, h6 {
     font-size: 30px;
     line-height: 47px;
     display: flex;
-    /* align-items: center; */
     text-align: center;
-
     color: #3F3F3F;
-
 }
 
 #map {
@@ -110,9 +119,58 @@ h1,h2,h3, h4, h5, h6 {
     align-items: center;
     /* display: flex; */
 }
+
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+label {
+    /* Presentation */
+    font-size: 48px
+  }
+  
+  /* Required Styling */
+  
+  label input[type="checkbox"] {
+    display: none;
+  }
+  
+  .custom-checkbox {
+    margin-left: 2em;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .custom-checkbox .glyphicon {
+    color: red;
+    position: absolute;
+    top: 0.4em;
+    left: -1.25em;
+    font-size: 0.75em;
+  }
+  
+  .custom-checkbox .glyphicon-heart-empty {
+    color: gray;
+  }
+  
+  .custom-checkbox .glyphicon-heart {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+  
+  .custom-checkbox:hover .glyphicon-heart{
+    opacity: 0.5;
+  }
+  
+  .custom-checkbox input[type="checkbox"]:checked ~ .glyphicon-heart {
+    opacity: 1;
+  }
+
 #saveButton {
     margin:auto;
 }
+
 .card {
     box-shadow: none;
     /* margin-bottom: 3%; */

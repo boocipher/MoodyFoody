@@ -91,6 +91,24 @@ var Bearer = 'Bearer ' + APIKEY   //needed for authentication header
   })
 }
 
+// function for animated heart
+var heartIcon = document.getElementById('heart-icon');
+
+heartIcon.addEventListener('click', function(event){
+    var heartElement = event.target
+    if(heartElement.matches("img")) {
+        var state = heartElement.getAttribute('data-state')
+        if(state == "empty") {
+            heartElement.setAttribute('data-state', 'fill');
+            heartElement.setAttribute('src', heartElement.dataset.fill)
+            //add search result into storage {object from yelp}
+            //localStorage.setItem("savedResult",JSON.stringify(object var name))
+        } else {
+        heartElement.setAttribute('data-state', 'empty')
+        heartElement.setAttribute('src', heartElement.dataset.empty)
+    }
+}})
+
 //Responsible for displaying map on results.html and fav.html
 function displayMap() {
 let map;
@@ -194,4 +212,7 @@ console.log(savedSearchResultsArray)
   
   //We need to convert locationInput to latitude and longitude using either Google Maps API (You will need to look up how to do this on docs) or you can use OpenWeatherMap or another API.
 
-
+  $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+  
