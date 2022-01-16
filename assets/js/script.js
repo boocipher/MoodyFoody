@@ -21,7 +21,7 @@ $('#searchForm').on('submit',function(event) {
     
   })
 
-yelpCallAPI() 
+// yelpCallAPI() 
 
 function lengthConverter() {
   // distanceInput = distanceInput.val()
@@ -31,19 +31,19 @@ function lengthConverter() {
 
 var userLocationLatLng        //will store coordinates of locationInput
 
-geoLocation()
-function geoLocation() {  //google API call to convert address/city/zipcode/etc to coordinates
-  fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+locationInput+'&key=AIzaSyC2zgWJRoeij-FPFj_I39eZ9oDHPcXlQoc')
-.then(function(response) {
-  return response.json();
-}).then(function(data) {
-  console.log("-------Google Geolocation Call-------");
-  console.log(data);
-  userLocationLatLng = data.results[0].geometry.location;
-  console.log("Below are the coordinates of the user's location input");
-  console.log(userLocationLatLng);
-})
-}
+// geoLocation()
+// function geoLocation() {  //google API call to convert address/city/zipcode/etc to coordinates
+//   fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+locationInput+'&key=AIzaSyC2zgWJRoeij-FPFj_I39eZ9oDHPcXlQoc')
+// .then(function(response) {
+//   return response.json();
+// }).then(function(data) {
+//   console.log("-------Google Geolocation Call-------");
+//   console.log(data);
+//   userLocationLatLng = data.results[0].geometry.location;
+//   console.log("Below are the coordinates of the user's location input");
+//   console.log(userLocationLatLng);
+// })
+// }
 
 function removeSpaces (locationInput) { //removeSpaces from input and returns "+" instead for google geolocation api//
   return locationInput.replace(/\s+/g, '+');
@@ -91,67 +91,88 @@ var Bearer = 'Bearer ' + APIKEY   //needed for authentication header
   })
 }
 
-// function for animated heart
-var heartIcon = document.getElementById('heart-icon');
+//Responsible for displaying map on results.html and fav.html
+// function displayMap() {
+// let map;
+// const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" //needed for marker labels
 
-heartIcon.addEventListener('click', function(event){
+// initMap()
+// function initMap() {
+//   map = new google.maps.Map(document.getElementById("map"), {
+//     center: userLocationLatLng, //determines center of map (user location)
+//     zoom: 10,
+//     }
+//   );
+//   var marker
+//   for (var i = 0; i<searchResultsArray.length; i++) {  //for loop to iterate through searchResultsArray
+//     console.log("Adding '"+labels.charAt(i)+ "' Marker to map with coordinates: ");
+//     console.log(searchResultsArray[i].location);
+//     var LatLng = {
+//       lat: searchResultsArray[i].location[1], //pulls latitude from searchResultsArray
+//       lng: searchResultsArray[i].location[0], //pulls longitude from searchResultsArray
+//     };
+//     var contentString = searchResultsArray[i].restaurantName
+//     console.log(contentString);
+
+//     var marker = new google.maps.Marker({  //places marker
+//       position: LatLng,
+//       label: labels.charAt(i),
+//       map,
+//       title: searchResultsArray[i].restaurantName,
+//     });
+
+//     //displays window that details restaurant name if marker is clicked
+//     //based off code from https://stackoverflow.com/questions/11106671/google-maps-api-multiple-markers-with-infowindows
+//     var content = searchResultsArray[i].restaurantName
+//     var infoWindow = new google.maps.InfoWindow()
+//     google.maps.event.addListener(marker,'click', (function(marker,content,infoWindow) {
+//       return function() {
+//         infoWindow.setContent(content)
+//         infoWindow.open(map,marker);
+//       };
+//     })(marker,content,infoWindow))
+// }
+// }
+// }
+displayResults()
+function displayResults() {
+  var resultsContainer = $('#resultList');
+  var collapsibleBox = $('<li>');
+
+  var heartIcon = $('<img>').attr('height','50px').attr('width','50px').attr('id','heart-icon').attr('src','assets/images/empty.png').attr('data-fill','assets/images/full.png').attr('data-empty','assets/images/empty.png').attr('data-state','empty').on('click',collapsibleBox, function(event) {
     var heartElement = event.target
-    if(heartElement.matches("img")) {
+      if(heartElement.matches("img")) {
         var state = heartElement.getAttribute('data-state')
         if(state == "empty") {
-            heartElement.setAttribute('data-state', 'fill');
-            heartElement.setAttribute('src', heartElement.dataset.fill)
+          heartElement.setAttribute('data-state', 'fill');
+          heartElement.setAttribute('src', heartElement.dataset.fill)
             //add search result into storage {object from yelp}
             //localStorage.setItem("savedResult",JSON.stringify(object var name))
         } else {
         heartElement.setAttribute('data-state', 'empty')
         heartElement.setAttribute('src', heartElement.dataset.empty)
-    }
-}})
+        }
+    }})
 
-//Responsible for displaying map on results.html and fav.html
-function displayMap() {
-let map;
-const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" //needed for marker labels
+  var resultsHeader = $('<div>').addClass('collapsible-header flex-row')
+      .append($('<h3>').text('restaurant name'), 
+      heartIcon)
 
-initMap()
-function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: userLocationLatLng, //determines center of map (user location)
-    zoom: 10,
-    }
-  );
-  var marker
-  for (var i = 0; i<searchResultsArray.length; i++) {  //for loop to iterate through searchResultsArray
-    console.log("Adding '"+labels.charAt(i)+ "' Marker to map with coordinates: ");
-    console.log(searchResultsArray[i].location);
-    var LatLng = {
-      lat: searchResultsArray[i].location[1], //pulls latitude from searchResultsArray
-      lng: searchResultsArray[i].location[0], //pulls longitude from searchResultsArray
-    };
-    var contentString = searchResultsArray[i].restaurantName
-    console.log(contentString);
+  var resultsBody = $('<div>').addClass('collapsible-body row')
+  .append($('<img>').attr('class','col s4').attr('src','https://res.cloudinary.com/culturemap-com/image/upload/ar_4:3,c_fill,g_faces:center,w_980/v1629725417/photos/323255_original.jpg'),
+    $('<div>').addClass('class','col s8 flex-column')
+      .append($('<div>')
+        .append($('<h6>').text('price:'),
+        $('<h6>').text('Description')),
+        $('<div>').addClass('flex-row')
+          .append($('<img>').attr('id','star-rating').attr('src','assets/images/regular_4.png'), $('<img>').attr('id','yelp-logo').attr('src','assets/images/yelp-logo.png'))))
 
-    var marker = new google.maps.Marker({  //places marker
-      position: LatLng,
-      label: labels.charAt(i),
-      map,
-      title: searchResultsArray[i].restaurantName,
-    });
-
-    //displays window that details restaurant name if marker is clicked
-    //based off code from https://stackoverflow.com/questions/11106671/google-maps-api-multiple-markers-with-infowindows
-    var content = searchResultsArray[i].restaurantName
-    var infoWindow = new google.maps.InfoWindow()
-    google.maps.event.addListener(marker,'click', (function(marker,content,infoWindow) {
-      return function() {
-        infoWindow.setContent(content)
-        infoWindow.open(map,marker);
-      };
-    })(marker,content,infoWindow))
+      resultsContainer.append(collapsibleBox.append(resultsHeader,resultsBody))
 }
-}
-}
+
+
+
+
 
 //LOCAL STORAGE COMPONENT
 var savedSearchResultsArray = JSON.parse(localStorage.getItem("savedSearches")) || []; //if savedSearch item exists in local storage, pull it.  Otherwise, initialize an empty array
