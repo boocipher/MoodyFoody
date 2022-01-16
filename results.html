@@ -34,26 +34,32 @@
                     <ul id=resultList class="collapsible">
                         <li>
                             <!-- collapsed info -->
-                          <div class="collapsible-header">
+                          <div class="collapsible-header flex-row">
                             <!-- heart element -->
+                            <h3>Restaurant Name</h3>
                             <img height="50px" width="50px"
-                            id="heart-icon"src="assets/images/empty.png"
-                                     data-fill="assets/images/full.png"
-                                     data-empty="assets/images/empty.png"
-                                     data-state="empty">
-                        
-                              <!--  for local storage use onClick id-of-input  -->
-                             <!-- <label for="id-of-input" class="custom-checkbox">
-                              <input type="checkbox" id="id-of-input"/> -->
-                              <!-- <i class="glyphicon glyphicon-heart-empty"></i>
-                              <i class="glyphicon glyphicon-heart"></i>
-                              <span>Favorite</span>
-                            </label> -->
-                              <!-- filter_drama
-                            </i> -->
-                            First</div> 
+                              id="heart-icon"src="assets/images/empty.png"
+                              data-fill="assets/images/full.png"
+                              data-empty="assets/images/empty.png"
+                              data-state="empty">
+                          </div> 
                           <!-- expanded info view -->
-                          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                          <div class="collapsible-body row">
+                            <img class="col s4" src="https://res.cloudinary.com/culturemap-com/image/upload/ar_4:3,c_fill,g_faces:center,w_980/v1629725417/photos/323255_original.jpg"> 
+                            <div class="col s8 flex-column">
+                              <div>
+                              <h6>Price: </h6>
+                              <h6>Description:</h6>
+                              </div>
+                              <div class="flex-row">
+                                <img id="star-rating"
+                                
+                                src="assets/images/regular_4.png">
+                                <img id="yelp-logo"
+                                src="assets/images/yelp-logo.png">
+                              </div>
+                            </div>
+                          </div>
                         </li>
                         <li>
                           <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
@@ -95,10 +101,10 @@
 </body>
             
 <!-- script needed for google maps API call -- "callback=initMap" calls the initMap function in script -->
-<script 
+<!-- <script 
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2zgWJRoeij-FPFj_I39eZ9oDHPcXlQoc&libraries=places&callback=initMap" 
     async=true>
-</script>
+</script> -->
 <!-- jQuery script CDN -->
 <script 
     src="https://code.jquery.com/jquery-3.6.0.min.js" 

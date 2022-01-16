@@ -123,6 +123,7 @@ h1,h2,h3, h4, h5, h6 {
 .flex-row {
     display: flex;
     justify-content: space-between;
+    align-items:flex-end
 }
 
 label {
@@ -175,4 +176,19 @@ label {
     box-shadow: none;
     /* margin-bottom: 3%; */
     height: 110px;
+}
+
+.flex-column {
+  display:flex;
+  flex-direction: column;
+}
+
+#star-rating {
+  max-width: 102px;
+  max-height: 18px;
+}
+
+#yelp-logo {
+  max-height: 39px;
+  max-width:80px;
 }
