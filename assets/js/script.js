@@ -21,7 +21,7 @@ $('#searchForm').on('submit',function(event) {
     
   })
 
-// yelpCallAPI() 
+yelpCallAPI() 
 
 function lengthConverter() {
   // distanceInput = distanceInput.val()
@@ -79,6 +79,9 @@ var Bearer = 'Bearer ' + APIKEY   //needed for authentication header
         restaurantName: data.businesses[i].name,
         price: data.businesses[i].price,
         location: [data.businesses[i].coordinates.longitude, data.businesses[i].coordinates.latitude],
+        address: data.businesses[i].location.display_address[0],
+        phone: data.businesses[i].display_phone,
+        distance: data.businesses[i].distance,
         rating: data.businesses[i].rating,
         image: data.businesses[i].image_url,
         websiteLink: data.businesses[i].url,
@@ -87,7 +90,9 @@ var Bearer = 'Bearer ' + APIKEY   //needed for authentication header
     }
     console.log("Below are search results that will be appended to the page")
     console.log(searchResultsArray);
-    displayMap()
+    // displayMap()
+    displayResults()
+
   })
 }
 
@@ -134,9 +139,10 @@ var Bearer = 'Bearer ' + APIKEY   //needed for authentication header
 // }
 // }
 // }
-displayResults()
 function displayResults() {
   var resultsContainer = $('#resultList');
+  
+  for (var i = 0;i<searchResultsArray.length;i++) {
   var collapsibleBox = $('<li>');
 
   var heartIcon = $('<img>').attr('height','50px').attr('width','50px').attr('id','heart-icon').attr('src','assets/images/empty.png').attr('data-fill','assets/images/full.png').attr('data-empty','assets/images/empty.png').attr('data-state','empty').on('click',collapsibleBox, function(event) {
@@ -155,19 +161,22 @@ function displayResults() {
     }})
 
   var resultsHeader = $('<div>').addClass('collapsible-header flex-row')
-      .append($('<h3>').text('restaurant name'), 
+      .append($('<h3>').text(searchResultsArray[i].restaurantName), 
       heartIcon)
 
   var resultsBody = $('<div>').addClass('collapsible-body row')
-  .append($('<img>').attr('class','col s4').attr('src','https://res.cloudinary.com/culturemap-com/image/upload/ar_4:3,c_fill,g_faces:center,w_980/v1629725417/photos/323255_original.jpg'),
+  .append($('<img>').attr('class','col s4').attr('src', searchResultsArray[i].image),
     $('<div>').addClass('class','col s8 flex-column')
       .append($('<div>')
-        .append($('<h6>').text('price:'),
-        $('<h6>').text('Description')),
+        .append($('<h6>').text('Price: ' + searchResultsArray[i].price),
+        $('<h6>').text('Phone Number: ' + searchResultsArray[i].phone),
+        $('<h6>').text('Distance: ' + searchResultsArray[i].distance),
+        $('<h6>').text('Address: ' + searchResultsArray[i].address),
         $('<div>').addClass('flex-row')
-          .append($('<img>').attr('id','star-rating').attr('src','assets/images/regular_4.png'), $('<img>').attr('id','yelp-logo').attr('src','assets/images/yelp-logo.png'))))
+          .append($('<img>').attr('id','star-rating').attr('src','assets/images/regular_'+ searchResultsArray[i].rating.toFixed(0) +'.png'), $('<img>').attr('id','yelp-logo').attr('src','assets/images/yelp-logo.png')))))
 
       resultsContainer.append(collapsibleBox.append(resultsHeader,resultsBody))
+    }
 }
 
 
