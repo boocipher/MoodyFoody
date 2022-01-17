@@ -139,14 +139,20 @@ var Bearer = 'Bearer ' + APIKEY   //needed for authentication header
 // }
 // }
 // }
+
+
+
 function displayResults() {
   var resultsContainer = $('#resultList');
-  
-  for (var i = 0;i<searchResultsArray.length;i++) {
-  var collapsibleBox = $('<li>');
+  var count = 0
 
-  var heartIcon = $('<img>').attr('height','50px').attr('width','50px').attr('id','heart-icon').attr('src','assets/images/empty.png').attr('data-fill','assets/images/full.png').attr('data-empty','assets/images/empty.png').attr('data-state','empty').on('click',collapsibleBox, function(event) {
-    var heartElement = event.target
+  for (var i = 0;i<searchResultsArray.length;i++) {
+  var collapsibleBox = $('<li>')
+    
+  var heartIcon = $('<img>').attr('height','50px').attr('width','50px').attr('id','heart-icon').attr('src','assets/images/empty.png').attr('data-fill','assets/images/full.png').attr('data-empty','assets/images/empty.png').attr('data-state','empty').on('click',collapsibleBox, 
+  
+  function(event) {
+    heartElement = event.target
       if(heartElement.matches("img")) {
         var state = heartElement.getAttribute('data-state')
         if(state == "empty") {
@@ -158,11 +164,22 @@ function displayResults() {
         heartElement.setAttribute('data-state', 'empty')
         heartElement.setAttribute('src', heartElement.dataset.empty)
         }
-    }})
+    }}).on('click', function(event) {
+      heartElement = event.target   //targets the heart icon that is clicked
+      console.log($(heartElement).attr('data-index'))   //each heart icon data-index value matches element position in [searchResultsArray]
+      savedSearchResultsArray.push(searchResultsArray[$(heartElement).attr('data-index')]);   //places searchResult object into savedSearchResultsArray
+      console.log(savedSearchResultsArray)
+      localStorage.setItem("savedSearches", JSON.stringify(savedSearchResultsArray));  //saves updated savedSearchResultsArray to local storage everytime a new object is added
+    })
+
+
+
 
   var resultsHeader = $('<div>').addClass('collapsible-header flex-row')
       .append($('<h3>').text(searchResultsArray[i].restaurantName), 
-      heartIcon)
+      heartIcon.attr('data-index',count))
+
+      count++
 
   var resultsBody = $('<div>').addClass('collapsible-body row')
   .append($('<img>').attr('class','col s4').attr('src', searchResultsArray[i].image),
@@ -185,11 +202,11 @@ function displayResults() {
 
 //LOCAL STORAGE COMPONENT
 var savedSearchResultsArray = JSON.parse(localStorage.getItem("savedSearches")) || []; //if savedSearch item exists in local storage, pull it.  Otherwise, initialize an empty array
-console.log(savedSearchResultsArray)
-// $('parentContainer').on('click', $('#saveButton'), function() {
-//   savedSearchResultsArray.push(searchResult);   //places searchResult object into savedSearchResultsArray
-//   localStorage.setItem("savedSearches", JSON.stringify(savedSearchResultsArray));  //saves updated savedSearchResultsArray to local storage
-// })
+// console.log(savedSearchResultsArray)
+// console.log(searchResultsArray)
+
+
+
 
 
 //LOCAL STORAGE PSEUDOCODE
