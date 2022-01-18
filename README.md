@@ -48,7 +48,7 @@ MoodyFoody utilizes both the Google Maps and Yelp APIs to pull location data, re
 ## Screenshots
 ![Form Page](https://i.imgur.com/QqNWoJn.png)
 ![Results Page](https://i.imgur.com/vZ4IqHb.png)
-![Favorites Page]()
+![Favorites Page](https://i.imgur.com/CbATLm0.png)
 <br />
 <br />
 ## Acknowledgements
