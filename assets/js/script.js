@@ -50,7 +50,7 @@ function removeSpaces (locationInput) { //removeSpaces from input and returns "+
 }
 
 function yelpCallAPI() {
-  if (window.location.pathname.includes('index.html') || window.location.pathname.includes('fav.html')) {
+  if (window.location.pathname.includes('index.html')) {
     return
   }
   var formSubmission = JSON.parse(localStorage.getItem('formSubmission'));  //pulls saved form data from local storage
@@ -103,7 +103,7 @@ function displayMap() {
 let map;
 const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" //needed for marker labels
 
-initMap()
+
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: userLocationLatLng, //determines center of map (user location)
@@ -111,6 +111,7 @@ function initMap() {
     }
   );
   if (window.location.pathname.includes('results.html')) {  //displays map for fav.html
+    console.log('results page for map!')
   var marker
   for (var i = 0; i<searchResultsArray.length; i++) {  //for loop to iterate through searchResultsArray
     console.log("Adding '"+labels.charAt(i)+ "' Marker to map with coordinates: ");
@@ -141,6 +142,7 @@ function initMap() {
     })(marker,content,infoWindow))
   }
 } else if (window.location.pathname.includes('fav.html')) {   //Displays map for favorites page
+  console.log('favorites page for map!')
   var marker
   for (var i = 0; i<savedSearchResultsArray.length; i++) {  //for loop to iterate through searchResultsArray
     console.log("Adding '"+labels.charAt(i)+ "' Marker to map with coordinates: ");
@@ -171,6 +173,7 @@ function initMap() {
     })(marker,content,infoWindow))
   }}
 }
+initMap()
 }
 
 function displayResults() {
