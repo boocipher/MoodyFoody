@@ -62,10 +62,10 @@
                 </div> -->
 
                 <div class="input-field col s1" id="resturantType">
-                    <select class="select"> 
+                    <select class="select" id='type'> 
                         <option value="" disabled selected>RESTURANT TYPE</option>
-                        <option value="1">Sitdown</option>
-                        <option value="2">Takeaway</option>
+                        <option value="-sitdown">Sitdown</option>
+                        <option value="-takeaway">Takeaway</option>
                     </select>
 
                 </div>
@@ -77,12 +77,12 @@
                 <div class="input-field col s12" id="timeInput">
                     <!-- <select class="dropdownOptions" id="timeInput"> -->
                         <!-- <option value="" disabled selected> WHEN</option> -->
-                        <select class="select">
+                        <select class="select" id="time">
                                 <option value="" disabled selected> WHEN </option>
-                                <option value="1">Right Now</option>
-                                <option value="2">Breakfast</option>
-                                <option value="3">Lunch</option>
-                                <option value="4">Dinner</option>
+                                <option value="&open_now=true">Right Now</option>
+                                <option value="open_at=8">Breakfast</option>
+                                <option value="open_at=12">Lunch</option>
+                                <option value="open_at=17">Dinner</option>
                         </select>
                 </div>
                 

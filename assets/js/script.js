@@ -3,7 +3,7 @@ var locationInput //string, can be zip code, city, or current address
 var priceRangeInput = 3 //1 = $, 2 = $$, 3 = $$$, 4 = $$$$
 var distanceInput = 20 //in meters max is 40000 meters 
 var foodTypeInput //fastfood-sitdown-
-var timeInput = '&open_now=true'   //now, breakfast,lunch,dinner //if user selects open now, then add '&open_now=true' to query string, if user selects time then add '&open_at=[time(int)]
+var timeInput  //now, breakfast,lunch,dinner //if user selects open now, then add '&open_now=true' to query string, if user selects time then add '&open_at=[time(int)]
 var distanceInputMeters 
 var searchResultsArray = []   //will store all parsed data from Yelp API pull
 
@@ -11,14 +11,15 @@ $('#searchForm').on('submit',function(event) {
   event.preventDefault();   //prevents page from refreshing
 		locationInput = $('#locationInput').val();
     lengthConverter()   //converts miles to meters
-		// priceRangeInput = $('#priceRangeInput').val();
+		priceRangeInput = $('#priceRangeInput').val();
 		distanceInput = $('#distanceInput').val();
 		foodTypeInput = $('#foodTypeInput').val() 
-    // + $('#resturantType').val();
-		// timeInput = $('#timeInput').val();
+    // + $('#type').val();
+		timeInput = $('#time').val();
     localStorage.setItem("formSubmission", JSON.stringify([locationInput, priceRangeInput, foodTypeInput, timeInput, distanceInputMeters]))
     document.location.assign('results.html');	
   })
+
 
 yelpCallAPI() 
 
@@ -49,6 +50,9 @@ function removeSpaces (locationInput) { //removeSpaces from input and returns "+
 }
 
 function yelpCallAPI() {
+  if (window.location.pathname.includes('index.html') || window.location.pathname.includes('fav.html')) {
+    return
+  }
   var formSubmission = JSON.parse(localStorage.getItem('formSubmission'));  //pulls saved form data from local storage
   console.log(formSubmission);
   locationInput = formSubmission[0];
