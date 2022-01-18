@@ -234,6 +234,7 @@ function favorites() {
   } else {
     console.log('you are not on the favs html')
 }
+}
 
 function displayFavorites() {
   var savedResultsContainer = $('#savedResultsList');
