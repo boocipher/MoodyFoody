@@ -285,7 +285,11 @@ function displayFavorites() {
     }
 }
 
-//Needed for collapsible materialize boxes
 $(document).ready(function(){
-  $('.collapsible').collapsible();
-});
+    $('select').formSelect();
+  });
+
+$(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+ 

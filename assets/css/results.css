@@ -7,15 +7,15 @@ h1{
     align-items: center;
     text-align: center;
     letter-spacing: 0.04em;
-    color: #000000;
-    margin-bottom: 3%;
+    color: #334B6F;
+    margin-bottom: 5%;
 }
 
 h5 {
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
-    font-size: 35px;
+    font-size: 38px;
     line-height: 46px;
     display: flex;
     /* align-items: center; */
@@ -37,9 +37,13 @@ h1 {
     color: #000000;
     margin-bottom: 3%;
     margin:0;
-    padding: 0;   
-    color: #494949;
+    padding: 0;
+    color: #334B6F;
 
+}
+
+h6{
+    color: #334B6F;
 }
 .row {
     margin: 0;
@@ -82,9 +86,10 @@ h1,h2,h3, h4, h5, h6 {
 #map {
     height: 500px;
     width:600px;
-    border: 1px solid #000000;
+    border: 4px solid #334B6F;
     box-sizing: border-box;
     border-radius: 24px;
+    margin: 1%;
 }
 
 .main-container {
@@ -106,16 +111,16 @@ h1,h2,h3, h4, h5, h6 {
     overflow: auto;
     /* height: 300px; */
     padding: 0, 5, 0 ,5;
-    height: 500px;
+    height: 540px;
 }
 
 .result-box {
-    border: 1px solid #000000;
+    border: 4px solid #334B6F;
     /* box-sizing: border-box; */
     border-radius: 24px;
     padding: 10px;
     margin: 10px;
-    background: #E3E3E3;
+    background: #FFDF8D;
     align-items: center;
     /* display: flex; */
 }
@@ -170,11 +175,13 @@ label {
 
 #saveButton {
     margin:auto;
+    color: #D84929;
+
 }
 
 .card {
     box-shadow: none;
-    /* margin-bottom: 3%; */
+    margin: 3%;
     height: 110px;
 }
 

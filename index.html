@@ -25,7 +25,7 @@
             <form class= "center-block container" id="searchForm" action="results.html">
                 <!-- form heading -->
                 <div class= "col ">
-                    <h3> Find your Perfect Resturant</h3>
+                    <h3> Find your Perfect Restaurant</h3>
                     <h5> fill out this quick survey to find your ideal resturant </h5>
                 </div>
 
@@ -39,7 +39,7 @@
                 <!-- Price Range -->
                 <div class="range-field" id="priceRange">
                     <p>PRICE RANGE</p>
-                    <input type="range" id="priceRangeInput" min="$" max="$$$$"/>
+                    <input type="range" id="priceRangeInput" min="1" max="4"/>
                 </div>
                 <!-- inclue javascript to appear # for range finder-->
                 <!-- Distance -->
@@ -57,38 +57,33 @@
 
                 <!-- Type -->
                 <!-- I might need to rewrite the options code -->
-                <div class="flip" onclick="resFunction()">
+                <!-- <div class="flip">
                     <p> RESTURANT TYPE</p>
-                </div>
+                </div> -->
 
-                <div class="col s1" id="resturantType"  style= "display: none;">
-                    <!-- <select class="dropdownOptions" id="foodTypeInput"> -->
-                    <!-- <option value="" disabled selected> RESTURANT TYPE</option> -->
-                    <option value="1">Sitdown</option>
-                    <option value="2">Takeaway</option>
-                    <script>
-                        function resFunction() {
-                          document.getElementById("resturantType").style.display = "block";
-                        }
-                    </script>
+                <div class="input-field col s1" id="resturantType">
+                    <select class="select"> 
+                        <option value="" disabled selected>RESTURANT TYPE</option>
+                        <option value="1">Sitdown</option>
+                        <option value="2">Takeaway</option>
+                    </select>
+
                 </div>
 
 
-                <div class="flip" onclick="timeFunction()">
+                <!-- <div class="flip">
                     <p> WHEN </p>
-                </div>
-                <div class="col s1" ID="timeInput"  style= "display: none;">
+                </div> -->
+                <div class="input-field col s12" id="timeInput">
                     <!-- <select class="dropdownOptions" id="timeInput"> -->
                         <!-- <option value="" disabled selected> WHEN</option> -->
-                        <option value="1">Right Now</option>
-                        <option value="2">Breakfast</option>
-                        <option value="3">Lunch</option>
-                        <option value="4">Dinner</option>
-                    <script>
-                        function timeFunction() {
-                          document.getElementById("timeInput").style.display = "block";
-                        }
-                    </script>
+                        <select class="select">
+                                <option value="" disabled selected> WHEN </option>
+                                <option value="1">Right Now</option>
+                                <option value="2">Breakfast</option>
+                                <option value="3">Lunch</option>
+                                <option value="4">Dinner</option>
+                        </select>
                 </div>
                 
                 <!-- submit button -->
