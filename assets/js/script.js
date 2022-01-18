@@ -321,7 +321,12 @@ function displayFavorites() {
   
   //We need to convert locationInput to latitude and longitude using either Google Maps API (You will need to look up how to do this on docs) or you can use OpenWeatherMap or another API.
 
+
   $(document).ready(function(){
+    $('select').formSelect();
+  });
+
+$(document).ready(function(){
     $('.collapsible').collapsible();
   });
   
