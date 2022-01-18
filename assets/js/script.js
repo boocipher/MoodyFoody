@@ -176,7 +176,7 @@ function displayResults() {
 
 
   var resultsHeader = $('<div>').addClass('collapsible-header flex-row')
-      .append($('<h3>').text(searchResultsArray[i].restaurantName), 
+      .append($('<h3>').attr('id','collapse').text(searchResultsArray[i].restaurantName), 
       heartIcon.attr('data-index',count))
 
       count++
@@ -201,13 +201,75 @@ function displayResults() {
 
 
 //LOCAL STORAGE COMPONENT
-var savedSearchResultsArray = JSON.parse(localStorage.getItem("savedSearches")) || []; //if savedSearch item exists in local storage, pull it.  Otherwise, initialize an empty array
-// console.log(savedSearchResultsArray)
-// console.log(searchResultsArray)
+var savedSearchResultsArray = JSON.parse(localStorage.getItem("savedSearches")) || []
+
+$('#favoritesButton').on('click', function(){
+  window.location.assign('./fav.html')
+})
+console.log(window.location)
+favorites()
+function favorites() {
+  if (window.location.pathname.includes('fav.html') ) {
+    displayFavorites()
+  } else {
+    console.log('you are not on the favs html')
+  }
+}
+function displayFavorites() {
+  var savedResultsContainer = $('#savedResultsList');
+  var count = 0
+  var savedSearches = JSON.parse(localStorage.getItem('savedSearches'))
+  console.log(savedSearches)
+
+  for (var i = 0;i<savedSearchResultsArray.length;i++) {
+  var collapsibleBox = $('<li>')
+    
+  var heartIcon = $('<img>').attr('height','50px').attr('width','50px').attr('id','heart-icon').attr('src','assets/images/empty.png').attr('data-fill','assets/images/full.png').attr('data-empty','assets/images/empty.png').attr('data-state','empty').on('click',collapsibleBox, 
+  
+  function(event) {
+    heartElement = event.target
+      if(heartElement.matches("img")) {
+        var state = heartElement.getAttribute('data-state')
+        if(state == "empty") {
+          heartElement.setAttribute('data-state', 'fill');
+          heartElement.setAttribute('src', heartElement.dataset.fill)
+            //add search result into storage {object from yelp}
+            //localStorage.setItem("savedResult",JSON.stringify(object var name))
+        } else {
+        heartElement.setAttribute('data-state', 'empty')
+        heartElement.setAttribute('src', heartElement.dataset.empty)
+        }
+    }}).on('click', function(event) {
+      heartElement = event.target   //targets the heart icon that is clicked
+      console.log($(heartElement).attr('data-index'))   //each heart icon data-index value matches element position in [searchResultsArray]
+      savedSearchResultsArray.push(searchResultsArray[$(heartElement).attr('data-index')]);   //places searchResult object into savedSearchResultsArray
+      console.log(savedSearchResultsArray)
+      localStorage.setItem("savedSearches", JSON.stringify(savedSearchResultsArray));  //saves updated savedSearchResultsArray to local storage everytime a new object is added
+    })
 
 
 
 
+  var resultsHeader = $('<div>').addClass('collapsible-header flex-row')
+      .append($('<h3>').attr('id','collapse').text(savedSearchResultsArray[i].restaurantName), 
+      heartIcon.attr('data-index',count))
+
+      count++
+
+  var resultsBody = $('<div>').addClass('collapsible-body row')
+  .append($('<img>').attr('class','col s4').attr('src', savedSearchResultsArray[i].image),
+    $('<div>').addClass('class','col s8 flex-column')
+      .append($('<div>')
+        .append($('<h6>').text('Price: ' + savedSearchResultsArray[i].price),
+        $('<h6>').text('Phone Number: ' + savedSearchResultsArray[i].phone),
+        $('<h6>').text('Distance: ' + savedSearchResultsArray[i].distance),
+        $('<h6>').text('Address: ' + savedSearchResultsArray[i].address),
+        $('<div>').addClass('flex-row')
+          .append($('<img>').attr('id','star-rating').attr('src','assets/images/regular_'+ savedSearchResultsArray[i].rating.toFixed(0) +'.png'), $('<img>').attr('id','yelp-logo').attr('src','assets/images/yelp-logo.png')))))
+
+      savedResultsContainer.append(collapsibleBox.append(resultsHeader,resultsBody))
+    }
+}
 
 //LOCAL STORAGE PSEUDOCODE
 //upon page load, favorites array will be parsed from local storage to initialize that variable (var savedSearchResultsArray)
