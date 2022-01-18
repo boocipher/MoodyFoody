@@ -1,4 +1,3 @@
-
     /* heading: MoodyFoody */
     h1 {
         font-family: Roboto;
@@ -10,19 +9,11 @@
         text-align: center;
         letter-spacing: 0.04em;
     
-        color: #000000;
+        color: #334B6F;
         margin-bottom: 3%;
     }
-    /* form for resturant search */
-    form{
-        background: #F3F3F3;
-        border: 1px solid #000000;
-        box-sizing: border-box;
-        border-radius: 25px;
-        padding: 5%;
-    
-    }
-    
+
+    /* form heading */
     h3 {
     
         font-family: Roboto;
@@ -34,9 +25,10 @@
         text-align: center;
         text-transform: capitalize;
     
-        color: #4B4B4B;
+        color: #334B6F;
     }
-    
+
+    /* form subheading */
     h5{
         font-family: Roboto;
         font-style: normal;
@@ -46,7 +38,7 @@
         align-items: center;
         text-align: center;
     
-        color: #5A5A5A;
+        color: #D84929;
     }
 
     p {
@@ -60,23 +52,33 @@
         /* text-align: center; */
         text-transform: uppercase;
     
-        color: #575757;
+        color: #334B6F;
+    }
+    
+    /* form for resturant search */
+    form {
+        background: #FFDF8D;
+        border: 3px solid #334B6F;
+        box-sizing: border-box;
+        border-radius: 25px;
+        padding: 5%;
+    
     }
     
     /* form controls: */
-    
+    /* location: */
     #location {
-        background: #E3E3E3;
-        border: 1px solid #000000;
+        background: #FFF1CD;
+        border: 3px solid #334B6F;
         box-sizing: border-box;
         border-radius: 10px;
         margin: 3%;
+        
     }
 
     #locationInput {
         text-align: center;
     }
-    
     
     /* add in active click and hover features */
     ::placeholder {
@@ -90,112 +92,166 @@
         text-align: center;
         text-transform: uppercase;
     
-        color: #575757;
+        color: #334B6F;
+    }
+
+    ::placeholder:focus {
+        display: none!important;
+    }
+
+    /* remove predetermined style from Materalize */
+    input {
+        border-bottom: none!important;
+        box-shadow: none!important;
+    }
+
+    /* Price Range */
+    #priceRange {
+        background: #FFF1CD;
+        border: 3px solid #334B6F;
+        box-sizing: border-box;
+        border-radius: 10px;
+        margin: 3%;
+    }
+
+    /* Distance Range */
+    #distance {
+        background: #FFF1CD;
+        border: 3px solid #334B6F;
+        box-sizing: border-box;
+        border-radius: 10px;
+        margin: 3%;
+    }
+
+    /* Range: style */
+    input [type=range] {
+        -webkit-appearance: none;
+        outline: 0;
+        margin: 0;
+        padding: 0;
+        height: 40px;
+        width: 100%;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+        background-color: #334B6F;
+        margin-top: 0.1px;
+        width:15px;
+        height: 15px;
+    }
+
+    input[type=range]::-webkit-slider-runnable-track {
+        background-color: #ffe299;
+        border-radius: 50px;
+        height: 100%;
+        border: solid 3px #334B6F;
+
+    }
+
+    /* Food Genre */
+    #foodGenre {
+        background: #FFF1CD;
+        border: 3px solid #334B6F;
+        box-sizing: border-box;
+        border-radius: 10px;
+        margin: 3%;
+
+    }
+ 
+    #foodTypeInput {
+        text-align: center;
     }
     
-    .flip {
-        background: #E3E3E3;
-        border: 1px solid #000000;
+    /* Resturant Type */
+    #resturantType {
+        background: #FFF1CD;
+        border: 3px solid #334B6F;
         box-sizing: border-box;
         border-radius: 10px;
         text-align: center;
         padding: 3%;
         margin: 3%;
-
-
     }
-
-    #priceRange {
-        background: #E3E3E3;
-        border: 1px solid #000000;
+ 
+    /* time input: */
+    #timeInput {
+        background: #FFF1CD;
+        border: 3px solid #334B6F;
         box-sizing: border-box;
         border-radius: 10px;
+        text-align: center;
+        padding: 3%;
         margin: 3%;
     }
-    
-    /* type {
-        color: #929292;
-        width: 454px;
-        height: 20px;
-    
-    } */
-    
-    #distance {
-        background: #E3E3E3;
-        border: 1px solid #000000;
-        box-sizing: border-box;
-        border-radius: 10px;
-        margin: 3%;
-    }
-    
-    #resturantType {
-        background: #E3E3E3;
-        border: 1px solid #000000;
-        box-sizing: border-box;
-        border-radius: 10px;
-        margin: 3%;
-    }
-    
-    #foodGenre {
-        background: #E3E3E3;
-        border: 1px solid #000000;
-        box-sizing: border-box;
-        border-radius: 10px;
-        margin: 3%;
 
-    }
-    #foodTypeInput {
+    .select{
+        -webkit-appearance: none;
+        background: #FFF1CD;
+        border: 3px solid #334B6F;
+        border-radius: 10px;
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 25px;
+        line-height: 47px;
+        align-items: center;
         text-align: center;
     }
-    
-    #timeInput{
-        background: #E3E3E3;
-        border: 1px solid #000000;
-        box-sizing: border-box;
+
+    select:active{
+        appearance: none;
+        color: #FFF1CD;
+        border: 3px solid #334B6F;
         border-radius: 10px;
-        margin: 3%;
 
-
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 25px;
+        line-height: 47px;
+        align-items: center;
+        text-align: center;
     }
+
+    option:active {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 25px;
+        line-height: 47px;
+        align-items: center;
+        text-align: center;
+    }
+
     
     #submitBtn {
-        background: #9F9F9F;
-        border: 1px solid #000000;
+        background: #334B6F;
         box-sizing: border-box;
         border-radius: 6px;
         /* width: 180px; */
         height: 60px;
+        width: 40%;
         
         font-family: Roboto;
         font-style: normal;
         font-weight: normal;
         font-size: 25px;
         line-height: 47px;
-        /* display: flex; */
         align-items: center;
         text-align: center;
         text-transform: uppercase;
     
-        color: #ECECEC;
-
+        color: #FFF1CD;
     }
-    
-    /* input {
-        background: #E3E3E3;
-        border: 1px solid #000000;
-        box-sizing: border-box;
-        border-radius: 10px;
-        text-align: center;
-        width: auto;
-        height: 60px;
-        display: flex;
-        width: 530px;
-    } */
+
+
+
+    #submitBtn:hover {
+        background: #FFF1CD;
+        color: #334B6F;
+    }
 
     input:hover {
         background: #d4d4d4;
-    }
-
-    input[type=”range”]::-webkit-slider-thumb {
-        color: red;
     }
