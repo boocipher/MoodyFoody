@@ -229,7 +229,6 @@ function favorites() {
     displayFavorites()
   } else {
     console.log('you are not on the favs html')
-  }
 }
 
 function displayFavorites() {
