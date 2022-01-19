@@ -1,7 +1,7 @@
 //We need to target these variables once their respective elements are added to the HTML
 var locationInput //string, can be zip code, city, or current address
-var priceRangeInput = 3 //1 = $, 2 = $$, 3 = $$$, 4 = $$$$
-var distanceInput = 20 //in meters max is 40000 meters 
+var priceRangeInput //1 = $, 2 = $$, 3 = $$$, 4 = $$$$
+var distanceInput //in meters max is 40000 meters 
 var foodTypeInput //fastfood-sitdown-
 var timeInput  //now, breakfast,lunch,dinner //if user selects open now, then add '&open_now=true' to query string, if user selects time then add '&open_at=[time(int)]
 var distanceInputMeters 
@@ -10,12 +10,11 @@ var searchResultsArray = []   //will store all parsed data from Yelp API pull
 $('#searchForm').on('submit',function(event) {
   event.preventDefault();   //prevents page from refreshing
 		locationInput = $('#locationInput').val();
-    lengthConverter()   //converts miles to meters
 		priceRangeInput = $('#priceRangeInput').val();
 		distanceInput = $('#distanceInput').val();
-		foodTypeInput = $('#foodTypeInput').val() 
-    // + $('#type').val();
-		timeInput = $('#time').val();
+    lengthConverter()   //converts miles to meters
+		foodTypeInput = $('#foodTypeInput').val() + $('#type').val();
+		convertTimeToUnix()
     localStorage.setItem("formSubmission", JSON.stringify([locationInput, priceRangeInput, foodTypeInput, timeInput, distanceInputMeters]))
     document.location.assign('results.html');	
   })
@@ -23,8 +22,24 @@ $('#searchForm').on('submit',function(event) {
 
 yelpCallAPI() 
 
+function convertTimeToUnix() {
+  var tomorrow = moment().add(1, 'days');
+  var tomorrowDateUnix = moment(tomorrow.format('YYYY-MM-DD')).unix()
+  if ($('#time').val() == 'right-now'){ 
+    timeInput = '&open_now=true'
+  } else if ($('#time').val() == 'breakfast'){ 
+    var tomorrowBreakfastUnix = tomorrowDateUnix + 27000
+    timeInput = '&open_at='+tomorrowBreakfastUnix
+  } else if ($('#time').val() == 'lunch'){ 
+    var tomorrowLunchUnix = tomorrowDateUnix + 41400
+    timeInput = '&open_at='+tomorrowLunchUnix
+  } else if ($('#time').val() == 'dinner'){ 
+    var tomorrowDinnerUnix = tomorrowDateUnix + 61200
+    timeInput = '&open_at='+tomorrowDinnerUnix
+  }
+}
 function lengthConverter() {
-  // distanceInput = distanceInput.val()
+  distanceInput = $('#distanceInput').val()
   distanceInputMeters = (distanceInput/0.00062137).toFixed(0).toString();
   console.log (typeof(distanceInputMeters)) //converts miles to meters from user input
 }
@@ -59,7 +74,7 @@ function yelpCallAPI() {
   priceRangeInput = formSubmission[1];
   foodTypeInput = formSubmission[2];
   timeInput = formSubmission[3];
-  distanceInputMeters = formSubmission[4]
+  distanceInputMeters = Number(formSubmission[4])
 
 //the first half of this url is needed because of a CORS error
 var yelpUrl = 'https://salty-mountain-68764.herokuapp.com/https://api.yelp.com/v3/businesses/search?radius='+ distanceInputMeters +'&price='+ priceRangeInput +'&term='+foodTypeInput+'&location=' + locationInput + timeInput
@@ -77,7 +92,7 @@ var Bearer = 'Bearer ' + APIKEY   //needed for authentication header
     console.log("-------Yelp Call-------");
     console.log(data);    //displays yelp call Data
     console.log(data.businesses[0].name)
-      for (var i = 0; i < 5; i++) {     //for loop iterates through data object and parses from the first 5 elements in the array
+      for (var i = 0; i < data.businesses.length; i++) {     //for loop iterates through data object and parses from the first 5 elements in the array
       var searchResult = {
         restaurantName: data.businesses[i].name,
         price: data.businesses[i].price,
@@ -214,7 +229,7 @@ function displayResults() {
       .append($('<div>')
         .append($('<h6>').text('Price: ' + searchResultsArray[i].price),
         $('<h6>').text('Phone Number: ' + searchResultsArray[i].phone),
-        $('<h6>').text('Distance: ' + searchResultsArray[i].distance),
+        $('<h6>').text('Distance: ' + searchResultsArray[i].distance.toFixed(0) + " meters away"),
         $('<h6>').text('Address: ' + searchResultsArray[i].address),
         $('<div>').addClass('flex-row')
           .append($('<img>').attr('id','star-rating').attr('src','assets/images/regular_'+ searchResultsArray[i].rating.toFixed(0) +'.png'), $('<img>').attr('id','yelp-logo').attr('src','assets/images/yelp-logo.png')))))
@@ -283,7 +298,7 @@ function displayFavorites() {
       .append($('<div>')
         .append($('<h6>').text('Price: ' + savedSearchResultsArray[i].price),
         $('<h6>').text('Phone Number: ' + savedSearchResultsArray[i].phone),
-        $('<h6>').text('Distance: ' + savedSearchResultsArray[i].distance),
+        $('<h6>').text('Distance: ' + savedSearchResultsArray[i].distance.toFixed(0) + " meters away"),
         $('<h6>').text('Address: ' + savedSearchResultsArray[i].address),
         $('<div>').addClass('flex-row')
           .append($('<img>').attr('id','star-rating').attr('src','assets/images/regular_'+ savedSearchResultsArray[i].rating.toFixed(0) +'.png'), $('<img>').attr('id','yelp-logo').attr('src','assets/images/yelp-logo.png')))))
