@@ -265,12 +265,19 @@ label {
   }
 }
 
+#favTitle {
+  height: 7vh
+}
+
 @media screen and (max-width:612px) {
   h1 {
     font-size: 8vw;
   }
   h3 {
     font-size: 5vw;
+  }
+  #favorites h3 {
+    font-size: 2.92rem;
   }
   h6 {
     font-size: 4vw
@@ -289,5 +296,8 @@ label {
     max-width: none;
     max-height: none;
     width: 35vw;
+  }
+  #favorites h3 {
+    font-size: 11vw;
   }
 }
