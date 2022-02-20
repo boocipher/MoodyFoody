@@ -224,7 +224,7 @@ function displayResults() {
       count++
 
   var resultsBody = $('<div>').addClass('collapsible-body row')
-  .append($('<img>').attr('class','col s4').attr('src', searchResultsArray[i].image),
+  .append($('<img>').attr('class','col s12 xl4').attr('id','foodImage').attr('src', searchResultsArray[i].image),
     $('<div>').addClass('class','col s8 flex-column')
       .append($('<div>')
         .append($('<h6>').text('Price: ' + searchResultsArray[i].price),
@@ -293,7 +293,7 @@ function displayFavorites() {
       count++
 
   var resultsBody = $('<div>').addClass('collapsible-body row')
-  .append($('<img>').attr('class','col s4').attr('src', savedSearchResultsArray[i].image),
+  .append($('<img>').attr('class','col s12 xl4').attr('id','foodImage').attr('src', savedSearchResultsArray[i].image),
     $('<div>').addClass('class','col s8 flex-column')
       .append($('<div>')
         .append($('<h6>').text('Price: ' + savedSearchResultsArray[i].price),
