@@ -13,6 +13,17 @@
         margin-bottom: 3%;
     }
 
+    #title {
+        height: 10vw;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1vh;
+    }
+
+    body {
+        padding: 2vh 0
+    }
+
     /* form heading */
     h3 {
     
@@ -62,7 +73,7 @@
         box-sizing: border-box;
         border-radius: 25px;
         padding: 5%;
-    
+        margin: 1vh auto
     }
     
     /* form controls: */
@@ -245,8 +256,6 @@
         color: #FFF1CD;
     }
 
-
-
     #submitBtn:hover {
         background: #FFF1CD;
         color: #334B6F;
@@ -255,3 +264,45 @@
     input:hover {
         background: #d4d4d4;
     }
+
+@media screen and (max-width: 700px) {
+    h1 {
+        font-size: 12vw;
+    }
+    #title {
+        height: 15vw;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #submitBtn {
+        font-size: 5vw;
+    }
+
+}
+
+@media screen and (max-width: 372px) {
+    h3 {
+        font-size: 13.5vw;
+        line-height: 13vw;
+    }
+    h5 {
+        font-size: 7vw;
+        line-height: 10vw;
+    }
+}
+
+@media screen and (max-width: 232px) {
+    p {
+        font-size: 10vw;
+    }
+    input {
+        font-size: 10vw;
+    }
+    ::placeholder {
+        font-size: 10vw;
+    }
+    #submitBtn {
+        width: 50vw;
+    }
+}
